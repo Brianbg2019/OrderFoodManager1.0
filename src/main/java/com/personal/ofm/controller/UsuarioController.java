@@ -30,14 +30,16 @@ public class UsuarioController {
 	@GetMapping(value = "listar")
 	public String listar(Model m) {
 		m.addAttribute("items", (List<Usuarios>) iusuario.findAll());
-		m.addAttribute("rol", (List<Roles>)iroles.findAll());
-		return "Usuarios/UsuariosList";
+		List<Roles> roles = (List<Roles>) iroles.findAll();
+		m.addAttribute("rol", roles);
+		return "Empleados/EmpleadosList";
 	}
 	
 	@GetMapping(value = "guardar")
 	public String nuevo(Model m) {
-		m.addAttribute("roles", (List<Roles>) iroles.findAll());
-		return "Usuarios/UsuariosList";
+		List<Roles> roles = (List<Roles>) iroles.findAll();
+		m.addAttribute("roles", roles);
+		return "Empleados/EmpleadosList";
 	}
 	
 	@PostMapping(value = "guardar")
@@ -51,5 +53,4 @@ public class UsuarioController {
 		iusuario.save(user);
 		return "redirect:/usuario/listar";
 	}
-	
 }
