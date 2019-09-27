@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+#login .container #login-row #login-column #login-box {
+  margin-left:700px;
+  margin-top: 75px;
+  max-width: 500px;
+  height: 500px;
+  border-radius: 10px;
+  background-color:rgba(0,121,200,0.7);
+}
+#login .container #login-row #login-column #login-box #login-form {
+  margin-left:20px;
+  padding: 10px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -35px;
+}
+.text-center{ color:#FFFFFF !important;}
+#ofm{color:#ffffff !important;}
+#email{color:#FFFFFF !important;}
+#password{color:#FFFFFF !important;}
+#passwordi{color:#686868 !important;}
+#contraseña{color:#FFFFFF !important;}
+.registrar{color:#ffffff!important;}
+#ofm{border-bottom:#C9FF00;}
+.form-check-inline{
+    color: white;
+}
+
+.hola{
+margin-top:-800px; 
+margin-bottom:-300px; 
+margin-left: 77px;  
+}

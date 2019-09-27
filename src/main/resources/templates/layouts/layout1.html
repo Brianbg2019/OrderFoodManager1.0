@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="plantilla">
+<head th:include="componentes/assets::asset">
+<title th:include="this::titulo"></title>
+</head>
+    <body>
+		<div th:include="componentes/navbar::navbar"></div>
+		<div th:include="this::contenido"></div>
+		<div th:include="componentes/footer::footer"></div>
+    </body>
+</html>

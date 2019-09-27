@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layouts/layout::plantilla">
+<head>
+	<title th:fragment="titulo">Listado de categorias</title>
+</head>
+
+<body class="container">
+
+	<div th:fragment="contenido">
+		<div class="col-10 offset-1 mt-3">
+			<button type="button" class="btn btn-secondary btn-lg" data-toggle="modal"
+				data-target="#ModalAddCategoria">✚ Nueva Categoria</button>
+		</div>
+		<div class="row justify-content-center align-items-center col-10 offset-1">
+			<h1 style="margin-bottom: 20px;">Lista de Categorias</h1>
+		</div>
+		<div class="container">
+			<table class="table col-10 offset-1" id="miTabla" cellspacing="0" width="100%">
+				<thead class="thead-dark">
+					<tr>
+						<th>ID</th>
+						<th>Categoria</th>
+						<th>Editar</th>
+						<th>Eliminar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="i : ${items}">
+						<td th:text="${i.idCategoria}"></td>
+						<td th:text="${i.nombreCategoria}"></td>
+						<td>
+							<!--form method="post" action="/editar">
+					      <input type="hidden" name="id_edit" th:value="${i.idCategoria}"-->
+							<a name="modificar" id="modificar" class="btn btn-outline-primary"
+								th:href="@{'/categoria/modificar/' + ${i.idCategoria}}" role="button">Editar</a>
+							<!-- /form-->
+						</td>
+						<td>
+							<a class="btn btn-outline-danger delete"
+								th:href="@{'/categoria/eliminar/' + ${i.idCategoria}}">Eliminar</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- The Modal -->
+		<div class="modal fade" id="ModalAddCategoria">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header bg-info">
+						<h4 class="modal-title">AGREGAR CATEGORIA</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+						<form th:action="@{/categoria/verificar}" method="post">
+							<div class="form-group row">
+								<label for="name" class="col-sm-2 control-label">Categoria</label>
+
+								<input type="text" class="form-control col-6" name="nombreCategoria"
+									placeholder="Nombre de la categoria" required="required">
+								<input type="submit" class="btn btn-outline-success col-2 offset-1" value="Guardar">
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div id="eliminar" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form>
+						<div class="modal-header">
+							<h4 class="modal-title" style="color: #000">Eliminar Producto</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">
+							<p>¿Esta seguro de eliminar este producto?</p>
+							<p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
+						</div>
+						<div class="modal-footer">
+							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+							<input type="submit" class="btn btn-danger" value="Aceptar">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

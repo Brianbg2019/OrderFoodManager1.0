@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layouts/layout::plantilla">
+
+<head>
+    <title th:fragment="titulo">Editar Cliente</title>
+</head>
+
+<body>
+    <div th:fragment="contenido">
+        <div class="container">
+            <h1 class="text-center mt-4">EDITAR CLIENTE</h1>
+            <form action="/roles/modificar" method="POST">
+                <div class="form-group row">
+                    <label for="id" class="col-sm-12 col-form-label lb">Id:</label>
+                    <div class="col-sm-12">
+                        <input th:value="${items.idRol}" type="number" class="form-control" name="idRol" id="idRol">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="nombre" class="col-sm-12 col-form-label lb">Nombre:</label>
+                    <div class="col-sm-12">
+                        <input th:value="${items.rol}" type="text" class="form-control" name="rol" id="nombreCategoria"
+                            placeholder="Rol">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class=" col-sm-10">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a name="regresar" id="regresar" class="btn btn-danger" href="/roles/listar"
+                            role="button">Regresar</a><!---->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

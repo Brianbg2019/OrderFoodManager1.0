@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layouts/layout::plantilla">
+<head>
+    <title th:fragment="titulo">Productos</title>
+</head>
+
+<body>
+    <div th:fragment="contenido">
+        <!--VISTA PARA EL LISTADO Y AGREGADO-->
+        <div class="container">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6" style="margin-bottom: 10px;">
+                            <a href="#addEmployeeModal" class="btn btn-secondary btn-lg" 
+                            data-toggle="modal">✚ Nuevo Producto</a>
+                        </div>
+                        <div class="row justify-content-center align-items-center col-10 offset-1">
+                            <h2 style="margin-bottom: 20px; font-size: 40px;">Producto</h2>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-hover" id="miTabla">
+                    <thead>
+                        <tr class="thead-dark">
+                            <th>Id Producto</th>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Editar</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="i : ${items}">
+                            <td th:text="${i.idProducto}"></td>
+                            <td th:text="${i.nombreProducto}"></td>
+                            <td th:text="${i.idCategoria.nombreCategoria}"></td>
+                            <td th:text="${i.precio}"></td>
+                            <td><a name="modificar" id="modificar" class="btn btn-primary"
+                                    th:href="@{'/producto/modificar/' + ${i.idProducto}}" role="button">Editar</a></td>
+                            <td><a class="btn btn-danger delete"
+                                    th:href="@{'/producto/eliminar/' + ${i.idProducto}}">Eliminar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--PARA AGREGAR UN NUEVO PRODUCTO-->
+        <div id="addEmployeeModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form th:action="@{/producto/guardar}" method="post">
+                        <div class="modal-header">
+                            <h4 class="modal-title ti">NUEVO PRODUCTO</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="lb">Nombre Producto</label>
+                                <input type="text" name="nombreProducto" autocomplete="off" class="form-control"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label class="lb">Precio</label>
+                                <input type="number" name="precio" autocomplete="off" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="categoria" class="lb">Categoria</label>
+                                <!--<input type="number" name="categoria" class="form-control" required>-->
+                                <select name="categoria" id="categoria" class="form-control" required>
+                                    <option th:each="c:${categoria}" th:value="${c.idCategoria}"
+                                        th:text="${c.nombreCategoria}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="submit" class="btn btn-success" value="Agregar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!--EDITAR UN PRODUCTO
+        <div id="editEmployeeModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Editar Producto</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Nombre Producto</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Precio</label>
+                                <input type="number" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-info" value="Guardar">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+                  -->
+
+        <!--ELIMINAR PRODUCTO-->
+        <div id="deleteEmployeeModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Eliminar Producto</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Â¿Esta seguro de eliminar este producto?</p>
+                            <p class="text-warning"><small>Esta acciÃ³n no se puede deshacer.</small></p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:include="component/scripts::script">
+    </div>
+</body>
+
+</html>
