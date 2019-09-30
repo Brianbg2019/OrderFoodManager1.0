@@ -42,10 +42,10 @@
                             <td th:text="${i.telefono}"></td>
                             <td th:text="${i.idRol.rol}"></td>
                             <td>
-                                <!--  a name="modificar" id="modificar" class="btn btn-outline-warning" th:href="@{'/usuario/modificar/' + ${i.idProducto}}" role="button">Editar</a-->
+                                <a name="modificar" id="modificar" class="btn btn-outline-warning" th:href="@{'/usuario/modificar/' + ${i.idUsuario}}" role="button">Editar</a>
                             </td>
                             <td>
-                                <!-- a class="btn btn-outline-danger delete" th:href="@{'/usuario/eliminar/' + ${i.idProducto}}">Eliminar</a-->
+                                <a class="btn btn-outline-danger delete" th:href="@{'/usuario/eliminar/' + ${i.idUsuario}}">Eliminar</a>
                             </td>
                         </tr>
                     </tbody>
@@ -78,38 +78,15 @@
                                 <input type="text" name="telefono" autocomplete="off" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="rol" class="col-sm-2 control-label">Cargo</label>
-                                <!--<input type="number" name="categoria" class="form-control" required>-->
-                                <select name="rol" id="rol" class="form-control" required>
-                                    <option th:each="r:${roles}" th:value="${r.idRol}" th:text="${r.rol}"></option>
+                                <label for="roles" class="col-sm-2 control-label">Cargo</label>
+                                <select name="roles" id="roles" class="form-control" required>
+                                    <option th:each="r:${rol}" th:value="${r.idRol}" th:text="${r.rol}"></option>
                                 </select>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-success" value="Agregar">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!--ELIMINAR PRODUCTO-->
-        <div id="deleteEmployeeModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <h4 class="modal-title">Eliminar Producto</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Â¿Esta seguro de eliminar este producto?</p>
-                            <p class="text-warning"><small>Esta acciÃ³n no se puede deshacer.</small></p>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                            <input type="submit" class="btn btn-danger" value="Eliminar">
                         </div>
                     </form>
                 </div>
