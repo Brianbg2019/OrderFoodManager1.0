@@ -45,4 +45,27 @@ public class ClienteController {
 		icliente.save(cliente);
 		return "redirect:/cliente/listar";
 	}
+	
+	@GetMapping(value = "modificar/{idCliente}")
+	public String modificar(Model m, @PathVariable Long idCliente){
+		Clientes cliente = icliente.findById(idCliente).get();
+		m.addAttribute("items", cliente);
+		return "Clientes/ClientesEdit";
+	}
+	
+	@PostMapping(value = "modificar")
+	public String editar(@RequestParam Long idCliente, @RequestParam String nombre){
+		Clientes cliente = new Clientes();
+		cliente.setIdCliente(idCliente);
+		cliente.setNombre(nombre);
+		icliente.save(cliente);
+		return "redirect:/cliente/listar";
+	}
+	
+	@GetMapping(value = "eliminar/{idCliente}")
+	public String eliminar(@PathVariable Long idCliente){
+		Clientes cliente = icliente.findById(idCliente).get();
+		icliente.delete(cliente);
+		return "redirect:/cliente/listar";
+	}
 }

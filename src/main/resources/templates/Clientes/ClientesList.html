@@ -36,10 +36,10 @@
                                 <td th:text="${i.idCliente}"></td>
                                 <td th:text="${i.nombre}"></td>
                                 <td>
-                                    <!--  a name="modificar" id="modificar" class="btn btn-outline-warning" th:href="@{'/usuario/modificar/' + ${i.idProducto}}" role="button">Editar</a-->
+                                    <a name="modificar" id="modificar" class="btn btn-outline-warning" th:href="@{'/cliente/modificar/' + ${i.idCliente}}" role="button">Editar</a>
                                 </td>
                                 <td>
-                                    <!-- a class="btn btn-outline-danger delete" th:href="@{'/usuario/eliminar/' + ${i.idProducto}}">Eliminar</a-->
+                                    <a class="btn btn-outline-danger delete" th:href="@{'/cliente/eliminar/' + ${i.idCliente}}">Eliminar</a>
                                 </td>
                             </tr>
                         </tbody>
