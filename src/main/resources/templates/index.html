@@ -1,34 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title>Login OFM</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"th:href="@{/vendor2/bootstrap/css/bootstrap.min.css}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/fonts2/font-awesome-4.7.0/css/font-awesome.min.css}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/fonts2/iconic/css/material-design-iconic-font.min.css}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor2/animate/animate.css}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor2/css-hamburgers/hamburgers.min.css}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor2/animsition/css/animsition.min.css}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor2/select2/select2.min.css}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor2/daterangepicker/daterangepicker.css}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/css2/util.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{/css2/main.css}">
-<!--===============================================================================================-->
-</head>
+
+<head th:include="component/assetLogin::assets"></head>
+
 <body>
-	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('/images/fondo.jpg');">
+		<div class="container-login100"
+			style="background-image: url('/images/fondo.jpg'); background-repeat: no-repeat;">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="POST" th:action="@{/login}">
 					<span class="login100-form-logo">
@@ -39,13 +17,13 @@
 						Bienvenid@s
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Type user name">
-						<input class="input100" id="username" type="text" name="username" placeholder="Nombre Usuario">
+					<div class="wrap-input100 validate-input" data-validate="Type user name">
+						<input class="input100" id="username" type="text" name="username" placeholder="Username">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Type password">
-						<input class="input100" id="password" type="password" name="password" placeholder="Contraseña">
+						<input class="input100" id="password" type="password" name="password" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
@@ -58,7 +36,7 @@
 			</div>
 		</div>
 	</div>
-	<div th:include="component/scrip2::scrip2">
-	</div>
+	<div th:include="component/scriptLogin::scripts"></div>
 </body>
+
 </html>
