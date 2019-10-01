@@ -42,10 +42,10 @@
                             <td th:text="${i.telefono}"></td>
                             <td th:text="${i.idRol.rol}"></td>
                             <td>
-                                <a name="modificar" id="modificar" class="btn btn-outline-warning" th:href="@{'/usuario/modificar/' + ${i.idUsuario}}" role="button">Editar</a>
+                                <a name="modificar" id="modificar" class="btn btn-primary" th:href="@{'/usuario/modificar/' + ${i.idUsuario}}" role="button">Editar</a>
                             </td>
                             <td>
-                                <a class="btn btn-outline-danger delete" th:href="@{'/usuario/eliminar/' + ${i.idUsuario}}">Eliminar</a>
+                                <a class="btn btn-danger delete" th:href="@{'/usuario/eliminar/' + ${i.idUsuario}}">Eliminar</a>
                             </td>
                         </tr>
                     </tbody>

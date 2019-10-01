@@ -31,12 +31,12 @@
 						<td>
 							<!--form method="post" action="/editar">
 					      <input type="hidden" name="id_edit" th:value="${i.idCategoria}"-->
-							<a name="modificar" id="modificar" class="btn btn-outline-primary"
+							<a name="modificar" id="modificar" class="btn btn-primary"
 								th:href="@{'/categoria/modificar/' + ${i.idCategoria}}" role="button">Editar</a>
 							<!-- /form-->
 						</td>
 						<td>
-							<a class="btn btn-outline-danger delete"
+							<a class="btn btn-danger delete"
 								th:href="@{'/categoria/eliminar/' + ${i.idCategoria}}">Eliminar</a>
 						</td>
 					</tr>

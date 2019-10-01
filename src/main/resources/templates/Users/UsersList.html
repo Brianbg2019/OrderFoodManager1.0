@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layouts/layout::plantilla">
+
+<head>
+    <title th:fragment="titulo">Perfiles</title>
+</head>
+
+<body>
+    <div th:fragment="contenido">
+        <div class="table-title">
+            <div class="col-sm-6" style="margin-bottom: 10px; margin-left: 110px;">
+                <a href="#Perfil" class="btn btn-secondary btn-lg" data-toggle="modal">
+                    <i class="fas fa-users"></i> NEW USER
+                </a>
+            </div>
+
+            <div class="row justify-content-center align-items-center col-10 offset-1">
+                <h2 style="margin-bottom: 20px; font-size: 40px;">USERS</h2>
+            </div>
+        </div>
+        <div class="container">
+            <table class="table table-hover" id="miTabla">
+                <thead>
+                    <tr class="thead-dark">
+                        <th>USER</th>
+                        <th>ROL</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="i : ${items}">
+                        <td th:text="${i.user}"></td>
+                        <td th:text="${i.role}"></td>
+                        <td>
+                            <a href="#" name="modificar" id="modificar" class="btn btn-primary" role="button">Editar</a>
+                            <a href="#" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="Perfil" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form th:action="@{/user/guardar}" method="POST">
+                        <div class="modal-header">
+                            <h4 class="modal-title ti">NEW USER</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="name" class="lb">Username:</label>
+                                <input type="text" name="user" autocomplete="off" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="lb">Password:</label>
+                                <input type="text" name="password" autocomplete="off" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="lb">Rol:</label>
+                                <input type="text" name="role" autocomplete="off" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-info" data-dismiss="modal" value="Cancelar">
+                            <input type="submit" class="btn btn-success" value="Agregar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
