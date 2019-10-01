@@ -25,7 +25,7 @@ public class UserController {
 	@GetMapping("listar")
 	public String listar(Model m) {
 		m.addAttribute("items", (List<Users>) iuser.findAll());
-		return "index2";
+		return "Users/UsersList";
 	}
 
 	@GetMapping("guardar")

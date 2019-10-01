@@ -22,7 +22,7 @@ public class LoginController {
 	
 	@GetMapping(value = "/")
 	public String Login() {
-		return "index2";
+		return "index";
 	}
 	
 	@GetMapping(value = {"/login"} )
@@ -31,8 +31,7 @@ public class LoginController {
 			flash.addFlashAttribute("Info","La sesión ya esta iniciada");
 			return "redirect:/producto/listar";
 		}
-		return "index2";
-
+		return "index";
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
