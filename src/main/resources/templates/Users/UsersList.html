@@ -3,6 +3,7 @@
 
 <head>
     <title th:fragment="titulo">Users</title>
+    <meta charset="utf-8">
 </head>
 
 <body>
@@ -24,7 +25,7 @@
                     <tr class="thead-dark">
                         <th>USER</th>
                         <th>ROL</th>
-                        <th>ACCIONES</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,8 +33,7 @@
                         <td th:text="${i.user}"></td>
                         <td th:text="${i.role}"></td>
                         <td>
-                            <a href="#" name="modificar" id="modificar" class="btn btn-primary" role="button">Editar</a>
-                            <a href="#" class="btn btn-danger">Eliminar</a>
+                            <a th:href="@{'/user/eliminar/' + ${i.user}}" class="btn btn-danger">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>
@@ -50,12 +50,12 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="name" class="lb">Username:</label>
-                                <input type="text" name="user" autocomplete="off" class="form-control" required>
+                                <label for="name" class="lb">Email:</label>
+                                <input type="email" name="user" autocomplete="off" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="name" class="lb">Password:</label>
-                                <input type="text" name="password" autocomplete="off" class="form-control" required>
+                                <label for="name" class="lb">Contraseña:</label>
+                                <input type="password" name="password" autocomplete="off" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="name" class="lb">Rol:</label>

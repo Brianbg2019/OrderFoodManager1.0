@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<meta charset="utf-8">
 <head th:include="component/assetLogin::assets"></head>
-
 <body>
 	<div class="limiter">
 		<div class="container-login100"
@@ -18,12 +17,12 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate="Type user name">
-						<input class="input100" id="username" type="text" name="username" placeholder="Username">
+						<input class="input100" id="username" type="email" name="username" placeholder="Email" autocomplete="off">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Type password">
-						<input class="input100" id="password" type="password" name="password" placeholder="Password">
+						<input class="input100" id="password" type="password" name="password" placeholder="Contraseña">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
