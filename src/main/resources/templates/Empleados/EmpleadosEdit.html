@@ -12,9 +12,9 @@
             <h1 class="text-center mt-4">Modificar</h1>
             <form action="/usuarios/modificar" method="POST">
                 <div class="form-group row">
-                    <label for="id" class="col-sm-12 col-form-label lb">Id:</label>
+                    <!--label for="id" class="col-sm-12 col-form-label lb">Id:</label-->
                     <div class="col-sm-12">
-                        <input th:value="${items.idUsuario}" type="number" class="form-control" name="idUsuario"
+                        <input th:value="${items.idUsuario}" type="hidden" class="form-control" name="idUsuario"
                             id="idUsuario">
                     </div>
                 </div>

@@ -9,9 +9,9 @@
             <h1 class="text-center mt-4">Editar</h1>
             <form action="/categoria/modificar" method="POST">
                 <div class="form-group row">
-                    <label for="id" class="col-sm-12 col-form-label lb">Id:</label>
+                    <!-- label for="id" class="col-sm-12 col-form-label lb">Id:</label-->
                     <div class="col-sm-12">
-                        <input th:value="${items.idCategoria}" type="number" class="form-control" name="idCategoria"
+                        <input th:value="${items.idCategoria}" type="hidden" class="form-control" name="idCategoria"
                             id="idCategoria">
                     </div>
                 </div>

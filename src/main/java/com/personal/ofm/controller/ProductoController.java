@@ -25,18 +25,11 @@ import com.personal.ofm.service.ProductosService;
 @RequestMapping("producto")
 public class ProductoController {
 	
-	private ProductosService pService;
-	
 	@Autowired
 	IProductos iproductos;
 	
 	@Autowired
 	ICategorias icategorias;
-	
-	@Autowired
-	private ProductoController(ProductosService pService) {
-		this.pService = pService;
-	}
 	
 	@GetMapping("listar")
 	public String listar(Model m) {

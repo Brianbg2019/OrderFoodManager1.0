@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <!--links para boostrap-->
@@ -42,7 +42,6 @@
 	  </header>
 	  			
   		
-  
 
 
   <!--ESTA ES LA CABECERA DEL PORTAFOLIO-->
@@ -86,7 +85,7 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
 
             <!--desde aca ingreso la tabla interna-->
             <div class="tabla">            
-                <table class="table">
+                <!--table class="table">
 		<thead>
 			<tr>
 				<th>Id Producto</th>
@@ -107,7 +106,7 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
 				<td><a class="btn btn-outline-danger delete" th:href="@{'/producto/eliminar/' + ${i.idProducto}}">Eliminar</a></td>
 			</tr>
 		</tbody>
-	</table>
+	</table-->
               </div>
               <td><button class="btn btn-primary" href="#" data-dismiss="modal">
                   <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
@@ -285,37 +284,16 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
                           <th>Platillo</th>
                           <th>Precio</th>
                           <th>Cantidad</th>
-                          <th>Tiempo</th>
-                          <th></th>
+                          <th>Orden</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Pechuga de pavo asada</td>
-                          <td><span class="price">$3.0</span></td>
-                          <td><input type="number" placeholder="---"></td>
-                          <td>45 minutos</td>
-                          <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                            </button></td>
-                        </tr>
-                        <tr>
-                          <td>Lomo de cerdo<br>en jengibre</td>
-                          <td><span class="price">$2.5</span></td>
-                          <td><input type="number" placeholder="---"></td>
-                          <td>40 minutos</td>
-                          <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                            </button></td>
-                        </tr>
-                        <tr>
-                          <td>Muslitos de pollo<br>agridulces</td>
-                          <td><span class="price">$2.0</span></td>
-                          <td><input type="number" placeholder="---"></td>
-                          <td>30 minutos</td>
-                          <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                            </button></td>
+                        <tr th:each="i : ${items}">
+                          <td th:text="${i.idProducto.nombreProducto}"></td>
+                          <td th:text="${i.idProducto.precio}"></td>
+                          <td th:text="${i.cantidad}"></td>
+                          <td><input type="button" value="Ordenar" class="btn btn-success"></td>
+                         
                         </tr>
                       </tbody>
                     </table>
@@ -824,6 +802,10 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
   <!-- Custom scripts for this template -->
   <script src="/js/freelancer.min.js"></script>
 
+
+<!-- Generar Orden -->
+
+	
 </body>
 
 </html>
