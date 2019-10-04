@@ -25,110 +25,96 @@
   <link href="/css/freelancer.css" rel="stylesheet">
 </head>
 
-<body style="background-color: rgba(126, 126, 126, 0.671)">
+<body>
 
   <!--ENCABEZADO DE LA PAGINA-->
-  		
-	  <header class="titu">
-	    <div class="container">
-		    <img src="/imgs/logo.png" alt="logo" height="100px" width="100px" title="Order Food Manager" >
-		   <div class="row justify-content-center align-items-center col-10 offset-1"> Order Food Manager</div>
-		    <div class="col-md-6 col-lg 0">
-		    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal12">
-		    <input type=image src="/imgs/iconos/icon.png" width="100" height="100" id="carrito">
-		    </div>
-		    </div>
-		  </div>
-	  </header>
-	  			
-  		
-
+  <header>
+    <div>
+      <div class="titu"><img src="/imgs/logo.png" alt="logo" height="60px" title="Order Food Manager"> 
+        Order Food Manager 
+        <img id="carro" src="/imgs/iconos/icon.png" width="70px" height="70px" data-target="#portfolioModal12"
+          data-toggle="modal"></div>
+    </div>
+  </header>
 
   <!--ESTA ES LA CABECERA DEL PORTAFOLIO-->
   <section class="page-section portfolio" id="portfolio">
-    <div style="background-color: #bbbbbb">
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">MENU</h2>
-
+    <div>
       <!--ITEMS DENTRO DEL PORTAFOLIO-->
       <div class="row">
+        <!-- Portfolio Modal 1 -->
+        <div class="portfolio-modal modal fade" id="portfolioModal12" tabindex="-1" role="dialog"
+          aria-labelledby="portfolioModal1Label" aria-hidden="true">
+          <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">
+                  <i class="fas fa-times"></i>
+                </span>
+              </button>
+              <div class="modal-body text-center">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                      <!-- Portfolio Modal - Title -->
+                      <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">ORDEN</h2>
+                      <!-- Icon Divider -->
+                      <div class="divider-custom">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon">
+                          <i class="fas fa-star"></i>
+                        </div>
+                        <div class="divider-custom-line"></div>
+                      </div>
+
+                      <!--desde aca ingreso la tabla interna-->
+                      <div class="tabla">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Id Producto</th>
+                              <th>Nombre</th>
+                              <th>Categoría</th>
+                              <th>Precio</th>
+                              <th>Editar</th>
+                              <th>Borrar</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr th:each="i : ${items}">
+                              <td th:text="${i.idProducto}"></td>
+                              <td th:text="${i.nombreProducto}"></td>
+                              <td th:text="${i.idCategoria.nombreCategoria}"></td>
+                              <td th:text="${i.precio}"></td>
+                              <td> <a name="modificar" id="modificar" class="btn btn-outline-warning"
+                                  th:href="@{'/producto/modificar/' + ${i.idProducto}}" role="button">Editar</a></td>
+                              <td><a class="btn btn-outline-danger delete"
+                                  th:href="@{'/producto/eliminar/' + ${i.idProducto}}">Eliminar</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                          <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                        </button></td>
+                      <!--fin de tabla-->
 
 
-
-
-
-
-
-<!-- Portfolio Modal 1 -->
-<div class="portfolio-modal modal fade" id="portfolioModal12" tabindex="-1" role="dialog"
-aria-labelledby="portfolioModal1Label" aria-hidden="true">
-<div class="modal-dialog modal-xl" role="document">
-  <div class="modal-content">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">
-        <i class="fas fa-times"></i>
-      </span>
-    </button>
-    <div class="modal-body text-center">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <!-- Portfolio Modal - Title -->
-            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">ORDEN</h2>
-            <!-- Icon Divider -->
-            <div class="divider-custom">
-              <div class="divider-custom-line"></div>
-              <div class="divider-custom-icon">
-                <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="divider-custom-line"></div>
             </div>
-
-            <!--desde aca ingreso la tabla interna-->
-            <div class="tabla">            
-                <!--table class="table">
-		<thead>
-			<tr>
-				<th>Id Producto</th>
-				<th>Nombre</th>
-				<th>Categoría</th>
-				<th>Precio</th>
-				<th>Editar</th>
-				<th>Borrar</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="i : ${items}">
-				<td th:text="${i.idProducto}"></td>
-				<td th:text="${i.nombreProducto}"></td>
-				<td th:text="${i.idCategoria.nombreCategoria}"></td>
-				<td th:text="${i.precio}"></td>
-				<td> <a name="modificar" id="modificar" class="btn btn-outline-warning" th:href="@{'/producto/modificar/' + ${i.idProducto}}" role="button">Editar</a></td>
-				<td><a class="btn btn-outline-danger delete" th:href="@{'/producto/eliminar/' + ${i.idProducto}}">Eliminar</a></td>
-			</tr>
-		</tbody>
-	</table-->
-              </div>
-              <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                  </button></td>
-              <!--fin de tabla-->
-
-              
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 
 
 
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 
         <!-- Portfolio Item 1 -->
@@ -209,13 +195,7 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
     </div>
   </section>
 
-  <!-- About Section -->
 
-  </section>
-
-  <!-- Contact Section -->
-
-  
 
   <!-- Copyright Section -->
   <section class="copyright py-4 text-center text-white">
@@ -237,18 +217,11 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
 
 
 
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-
-
-
-
-
-
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 
   <!-- Portfolio Modal 1 -->
@@ -277,30 +250,51 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
                 </div>
 
                 <!--desde aca ingreso la tabla interna-->
-                <div class="tabla">            
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th>Platillo</th>
-                          <th>Precio</th>
-                          <th>Cantidad</th>
-                          <th>Orden</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr th:each="i : ${items}">
-                          <td th:text="${i.idProducto.nombreProducto}"></td>
-                          <td th:text="${i.idProducto.precio}"></td>
-                          <td th:text="${i.cantidad}"></td>
-                          <td><input type="button" value="Ordenar" class="btn btn-success"></td>
-                         
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <!--fin de tabla-->
+                <div class="tabla">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Platillo</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Tiempo</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Pechuga de pavo asada</td>
+                        <td><span class="price">$3.0</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td>45 minutos</td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                      <tr>
+                        <td>Lomo de cerdo<br>en jengibre</td>
+                        <td><span class="price">$2.5</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td>40 minutos</td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                      <tr>
+                        <td>Muslitos de pollo<br>agridulces</td>
+                        <td><span class="price">$2.0</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td>30 minutos</td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--fin de tabla-->
 
-                  
+
               </div>
             </div>
           </div>
@@ -310,16 +304,11 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
   </div>
 
 
-
-
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-
-
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 
   <!-- Portfolio Modal 2 -->
@@ -348,14 +337,14 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
                 </div>
 
                 <!--desde aca ingreso la tabla interna-->
-                <div class="tabla">            
+                <div class="tabla">
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th >Platillo</th>
-                        <th >Precio</th>
-                        <th >Cantidad</th>  
-                        <th >Tiempo</th>
+                        <th>Platillo</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Tiempo</th>
                         <th></th>
                       </tr>
                     </thead>
@@ -366,7 +355,7 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
                         <td><input type="number" placeholder="---"></td>
                         <td>2 minutos</td>
                         <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                          <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
                           </button></td>
                       </tr>
                       <tr>
@@ -375,7 +364,7 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
                         <td><input type="number" placeholder="---"></td>
                         <td>5-7 minutos</td>
                         <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                          <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
                           </button></td>
                       </tr>
                       <tr>
@@ -384,7 +373,7 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
                         <td><input type="number" placeholder="---"></td>
                         <td>7 minutos</td>
                         <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                          <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
                           </button></td>
                       </tr>
                     </tbody>
@@ -395,7 +384,7 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
 
 
                 <!-- Portfolio Modal - Text -->
-                  
+
               </div>
             </div>
           </div>
@@ -406,14 +395,11 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
 
 
 
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-
-
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 
   <!-- Portfolio Modal 3 -->
@@ -441,53 +427,53 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
                   <div class="divider-custom-line"></div>
                 </div>
 
-<!--desde aca ingreso la tabla interna-->
-<div class="tabla">            
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th >Platillo</th>
-          <th >Precio</th>
-          <th >Cantidad</th>  
-          <th >Tiempo</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Flan</td>
-          <td><span class="price">$1.50</span></td>
-          <td><input type="number" placeholder="---"></td>
-          <td>5 minutos</td>
-          <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-            </button></td>
-        </tr>
-        <tr>
-          <td>Tiramisú</td>
-          <td><span class="price">$1.75</span></td>
-          <td><input type="number" placeholder="---"></td>
-          <td>5 minutos</td>
-          <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-            </button></td>
-        </tr>
-        <tr>
-          <td>Pie</td>
-          <td><span class="price">$2.25</span></td>
-          <td><input type="number" placeholder="---"></td>
-          <td>8 minutos</td>
-          <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-            </button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <!--fin de tabla-->
+                <!--desde aca ingreso la tabla interna-->
+                <div class="tabla">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Platillo</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Tiempo</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Flan</td>
+                        <td><span class="price">$1.50</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td>5 minutos</td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                      <tr>
+                        <td>Tiramisú</td>
+                        <td><span class="price">$1.75</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td>5 minutos</td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                      <tr>
+                        <td>Pie</td>
+                        <td><span class="price">$2.25</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td>8 minutos</td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--fin de tabla-->
 
 
-               
+
               </div>
             </div>
           </div>
@@ -498,13 +484,11 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
 
 
 
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 
   <!-- Portfolio Modal 4 -->
@@ -533,53 +517,53 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
                 </div>
 
 
-<!--desde aca ingreso la tabla interna-->
-<div class="tabla">            
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th >Platillo</th>
-          <th >Precio</th>
-          <th >Cantidad</th>  
-          <th >Tiempo</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Chocolate</td>
-          <td><span class="price">$1.25</span></td>
-          <td><input type="number" placeholder="---"></td>
-          <td>5 minutos</td>
-          <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-            </button></td>
-        </tr>
-        <tr>
-          <td>Soda</td>
-          <td><span class="price">$1.00</span></td>
-          <td><input type="number" placeholder="---"></td>
-          <td>1 minuto</td>
-          <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-            </button></td>
-        </tr>
-        <tr>
-          <td>Limonada</td>
-          <td><span class="price">$1.00</span></td>
-          <td><input type="number" placeholder="---"></td>
-          <td>8 minutos</td>
-          <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-            </button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <!--fin de tabla-->
+                <!--desde aca ingreso la tabla interna-->
+                <div class="tabla">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Platillo</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Tiempo</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Chocolate</td>
+                        <td><span class="price">$1.25</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td>5 minutos</td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                      <tr>
+                        <td>Soda</td>
+                        <td><span class="price">$1.00</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td>1 minuto</td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                      <tr>
+                        <td>Limonada</td>
+                        <td><span class="price">$1.00</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td>8 minutos</td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--fin de tabla-->
 
 
-                
+
               </div>
             </div>
           </div>
@@ -590,14 +574,11 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
 
 
 
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-
-
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 
   <!-- Portfolio Modal 5 -->
@@ -627,52 +608,52 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
 
 
                 <!--desde aca ingreso la tabla interna-->
-<div class="tabla">            
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th >Platillo</th>
-          <th >Precio</th>
-          <th >Cantidad</th>  
-          <th >Tiempo</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Canelones de mariscos</td>
-          <td><span class="price">$3.00</span></td>
-          <td><input type="number" placeholder="---"></td>
-          <td>9 minutos</td>
-          <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-            </button></td>
-        </tr>
-        <tr>
-          <td>Mejillones al curry</td>
-          <td><span class="price">$2.25</span></td>
-          <td><input type="number" placeholder="---"></td>
-          <td>5 minutos</td>
-          <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-            </button></td>
-        </tr>
-        <tr>
-          <td>Pastel de pescado y mariscos</td>
-          <td><span class="price">$3.00</span></td>
-          <td><input type="number" placeholder="---"></td>
-          <td>10 minutos</td>
-          <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-            </button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <!--fin de tabla-->
+                <div class="tabla">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Platillo</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Tiempo</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Canelones de mariscos</td>
+                        <td><span class="price">$3.00</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td>9 minutos</td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                      <tr>
+                        <td>Mejillones al curry</td>
+                        <td><span class="price">$2.25</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td>5 minutos</td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                      <tr>
+                        <td>Pastel de pescado y mariscos</td>
+                        <td><span class="price">$3.00</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td>10 minutos</td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--fin de tabla-->
 
 
-                
+
               </div>
             </div>
           </div>
@@ -682,17 +663,11 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
   </div>
 
 
-
-
-
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-
-
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 
   <!-- Portfolio Modal 6 -->
@@ -722,53 +697,50 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
 
 
 
-<!--desde aca ingreso la tabla interna-->
-<div class="tabla">            
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th >Platillo</th>
-        <th >Precio</th>
-        <th >Cantidad</th>  
-        <th >Tiempo</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Pastel de mariscos y soda</td>
-        <td><span class="price">$2.70</span></td>
-        <td><input type="number" placeholder="---"></td>
-        <td>5 minutos</td>
-        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-          <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-          </button></td>
-      </tr>
-      <tr>
-        <td>Carne asada,sopa de pollo y bebida</td>
-        <td><span class="price">$3.75</span></td>
-        <td><input type="number" placeholder="---"></td>
-        <td>5 minutos</td>
-        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-          <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-          </button></td>
-      </tr>
-      <tr>
-        <td>Pie,</td>
-        <td><span class="price">$2.25</span></td>
-        <td><input type="number" placeholder="---"></td>
-        <td>8 minutos</td>
-        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-          <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-          </button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<!--fin de tabla-->
+                <!--desde aca ingreso la tabla interna-->
+                <div class="tabla">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Platillo</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Pastel de mariscos y soda</td>
+                        <td><span class="price">$0.0</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                      <tr>
+                        <td>Carne asada,sopa de pollo y bebida</td>
+                        <td><span class="price">$0.00</span></td>
+                        <td><input type="number" placeholder="---"></td>
 
-                
-                
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                      <tr>
+                        <td>Pie,</td>
+                        <td><span class="price">$0.00</span></td>
+                        <td><input type="number" placeholder="---"></td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--fin de tabla-->
+
+
+
               </div>
             </div>
           </div>
@@ -778,13 +750,11 @@ aria-labelledby="portfolioModal1Label" aria-hidden="true">
   </div>
 
 
-
-
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 
 
