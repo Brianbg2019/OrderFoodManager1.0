@@ -16,13 +16,13 @@
 
   <!-- Custom fonts for this theme -->
   <!--  link rel="icon" href="./static/img/portfolio/logo.png"-->
-  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link th:href="@{/recursos/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
     type="text/css">
 
   <!--CSS-->
-  <link href="/css/freelancer.css" rel="stylesheet">
+  <link th:href="@{/css/freelancer.css}" rel="stylesheet">
 </head>
 
 <body>
@@ -30,15 +30,15 @@
   <!--ENCABEZADO DE LA PAGINA-->
   <header>
     <div>
-      <div class="titu"><img src="/imgs/logo.png" alt="logo" height="60px" title="Order Food Manager"> 
-        Order Food Manager 
+      <div class="titu"><img src="/imgs/logo.png" alt="logo" height="60px" title="Order Food Manager">
+        Order Food Manager
         <img id="carro" src="/imgs/iconos/icon.png" width="70px" height="70px" data-target="#portfolioModal12"
           data-toggle="modal"></div>
     </div>
   </header>
 
   <!--ESTA ES LA CABECERA DEL PORTAFOLIO-->
-  <section class="page-section portfolio" id="portfolio">
+  <section class="page-section portfolio" id="portfolio" style="background-image: url('/imgs/i3.jpg'); background-size: 100%;">
     <div>
       <!--ITEMS DENTRO DEL PORTAFOLIO-->
       <div class="row">
@@ -705,23 +705,19 @@
 
 
   <!-- Bootstrap core JavaScript -->
-  <script src="/vendor/jquery/jquery.min.js"></script>
-  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script th:src="@{/recursos/jquery/jquery.min.js}"></script>
+  <script th:src="@{/recursos/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script th:src="@{/recursos/jquery-easing/jquery.easing.min.js}"></script>
 
   <!-- Contact Form JavaScript -->
-  <script src="/js/jqBootstrapValidation.js"></script>
-  <script src="/js/contact_me.js"></script>
+  <script th:src="@{/js/sb-admin-2.js}"></script>
+  <script th:src="@{/js/sb-admin-2.min.js}"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="/js/freelancer.min.js"></script>
+  <script th:src="@{/js/main.js}"></script>
 
-
-<!-- Generar Orden -->
-
-	
 </body>
 
 </html>
