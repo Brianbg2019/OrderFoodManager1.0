@@ -8,6 +8,10 @@
 <body>
     <div th:fragment="contenido">
         <!--VISTA PARA EL LISTADO Y AGREGADO-->
+        <div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+     th:text="${mensaje}"
+     class="alert">
+             </div>
         <div class="container">
             <div class="table-wrapper">
                 <div class="table-title">

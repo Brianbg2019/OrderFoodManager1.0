@@ -72,26 +72,34 @@
                         <table class="table">
                           <thead>
                             <tr>
-                              <th>Id Producto</th>
-                              <th>Nombre</th>
-                              <th>Categoría</th>
+                              <th>Orden N°</th>
+                              <th>Producto</th>
+                              <th>Cantidad</th>
                               <th>Precio</th>
+                              <th>Total</th>
                               <th>Editar</th>
                               <th>Borrar</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr th:each="i : ${items}">
-                              <td th:text="${i.idProducto}"></td>
-                              <td th:text="${i.nombreProducto}"></td>
-                              <td th:text="${i.idCategoria.nombreCategoria}"></td>
-                              <td th:text="${i.precio}"></td>
-                              <td> <a name="modificar" id="modificar" class="btn btn-outline-warning"
-                                  th:href="@{'/producto/modificar/' + ${i.idProducto}}" role="button">Editar</a></td>
-                              <td><a class="btn btn-outline-danger delete"
-                                  th:href="@{'/producto/eliminar/' + ${i.idProducto}}">Eliminar</a></td>
+                              <td th:text="${i.idOrden.idOrden}"></td>
+                              <td th:text="${i.idProducto.nombreProducto}"></td>
+                              <td th:text="${i.cantidad}"></td>
+                              <td th:text="${i.idProducto.precio}"></td>
+                              <td></td>
+                              <td> <a name="modificar" id="modificar" class="btn btn-outline-warning" role="button">Editar</a></td><!-- th:href="@{'/producto/modificar/' + ${i.idProducto}}" -->
+                              <td><a class="btn btn-outline-danger delete" >Eliminar</a></td><!-- th:href="@{'/producto/eliminar/' + ${i.idProducto}}" -->
                             </tr>
                           </tbody>
+                        </table>
+                        <table class="table">
+                        <thead>
+                        	<tr>
+                        		<th>Total</th>
+                        		<td>Total a pagar</td>
+                        	</tr>
+                        </thead>
                         </table>
                       </div>
                       <td><button class="btn btn-primary" href="#" data-dismiss="modal">
@@ -219,7 +227,7 @@
 
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////INICIO DE TABLAS PARA MODALES:///////////////////////////// -->
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
@@ -255,40 +263,25 @@
                     <thead>
                       <tr>
                         <th>Platillo</th>
-                        <th>Precio</th>
                         <th>Cantidad</th>
-                        <th>Tiempo</th>
-                        <th></th>
+                        <th>Precio</th>
+                        <th>Ordenar</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Pechuga de pavo asada</td>
-                        <td><span class="price">$3.0</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>45 minutos</td>
+                      <tr th:each="i : ${items}">
+                        <td th:text="${i.idProducto.nombreProducto}"></td>
+                        <td ><!-- th:text="${i.cantidad}" -->
+                        <select>
+                        	<option>---</option>
+                        	<option th:text="${i.cantidad}"></option>
+                        </select>
+                        </td>
+                        <td th:text="${i.idProducto.precio}"></td>
                         <td><button class="btn btn-primary" href="#" data-dismiss="modal">
                             <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
                           </button></td>
-                      </tr>
-                      <tr>
-                        <td>Lomo de cerdo<br>en jengibre</td>
-                        <td><span class="price">$2.5</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>40 minutos</td>
-                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                          </button></td>
-                      </tr>
-                      <tr>
-                        <td>Muslitos de pollo<br>agridulces</td>
-                        <td><span class="price">$2.0</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>30 minutos</td>
-                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                          </button></td>
-                      </tr>
+                      </tr>      
                     </tbody>
                   </table>
                 </div>
@@ -342,40 +335,30 @@
                     <thead>
                       <tr>
                         <th>Platillo</th>
-                        <th>Precio</th>
                         <th>Cantidad</th>
-                        <th>Tiempo</th>
-                        <th></th>
+                        <th>Precio</th>
+                        <th>Ordenar</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Guacamole</td>
-                        <td><span class="price">$1.0</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>2 minutos</td>
+                      <tr th:each="i : ${items}">
+                        <td th:text="${i.idProducto.nombreProducto}"></td>
+                        <td ><!-- th:text="${i.cantidad}" -->
+                        <select>
+                        	<option>---</option>
+                        	<option th:text="${i.cantidad}"></option>
+                        	<option>2</option>
+                        	<option>3</option>
+                        	<option>4</option>
+                        	<option>5</option>
+                        	<option>Presonalizar</option>
+                        </select>
+                        </td>
+                        <td th:text="${i.idProducto.precio}"></td>
                         <td><button class="btn btn-primary" href="#" data-dismiss="modal">
                             <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
                           </button></td>
-                      </tr>
-                      <tr>
-                        <td>Jalapeños</td>
-                        <td><span class="price">$2.0</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>5-7 minutos</td>
-                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                          </button></td>
-                      </tr>
-                      <tr>
-                        <td>Quesadilla</td>
-                        <td><span class="price">$1.75</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>7 minutos</td>
-                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                          </button></td>
-                      </tr>
+                      </tr>      
                     </tbody>
                   </table>
                 </div>
@@ -433,40 +416,30 @@
                     <thead>
                       <tr>
                         <th>Platillo</th>
-                        <th>Precio</th>
                         <th>Cantidad</th>
-                        <th>Tiempo</th>
-                        <th></th>
+                        <th>Precio</th>
+                        <th>Ordenar</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Flan</td>
-                        <td><span class="price">$1.50</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>5 minutos</td>
+                      <tr th:each="i : ${items}">
+                        <td th:text="${i.idProducto.nombreProducto}"></td>
+                        <td ><!-- th:text="${i.cantidad}" -->
+                        <select>
+                        	<option>---</option>
+                        	<option th:text="${i.cantidad}"></option>
+                        	<option>2</option>
+                        	<option>3</option>
+                        	<option>4</option>
+                        	<option>5</option>
+                        	<option>Presonalizar</option>
+                        </select>
+                        </td>
+                        <td th:text="${i.idProducto.precio}"></td>
                         <td><button class="btn btn-primary" href="#" data-dismiss="modal">
                             <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
                           </button></td>
-                      </tr>
-                      <tr>
-                        <td>Tiramisú</td>
-                        <td><span class="price">$1.75</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>5 minutos</td>
-                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                          </button></td>
-                      </tr>
-                      <tr>
-                        <td>Pie</td>
-                        <td><span class="price">$2.25</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>8 minutos</td>
-                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                          </button></td>
-                      </tr>
+                      </tr>      
                     </tbody>
                   </table>
                 </div>
@@ -523,40 +496,30 @@
                     <thead>
                       <tr>
                         <th>Platillo</th>
-                        <th>Precio</th>
                         <th>Cantidad</th>
-                        <th>Tiempo</th>
-                        <th></th>
+                        <th>Precio</th>
+                        <th>Ordenar</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Chocolate</td>
-                        <td><span class="price">$1.25</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>5 minutos</td>
+                      <tr th:each="i : ${items}">
+                        <td th:text="${i.idProducto.nombreProducto}"></td>
+                        <td ><!-- th:text="${i.cantidad}" -->
+                        <select>
+                        	<option>---</option>
+                        	<option th:text="${i.cantidad}"></option>
+                        	<option>2</option>
+                        	<option>3</option>
+                        	<option>4</option>
+                        	<option>5</option>
+                        	<option>Presonalizar</option>
+                        </select>
+                        </td>
+                        <td th:text="${i.idProducto.precio}"></td>
                         <td><button class="btn btn-primary" href="#" data-dismiss="modal">
                             <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
                           </button></td>
-                      </tr>
-                      <tr>
-                        <td>Soda</td>
-                        <td><span class="price">$1.00</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>1 minuto</td>
-                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                          </button></td>
-                      </tr>
-                      <tr>
-                        <td>Limonada</td>
-                        <td><span class="price">$1.00</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>8 minutos</td>
-                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                          </button></td>
-                      </tr>
+                      </tr>      
                     </tbody>
                   </table>
                 </div>
@@ -613,40 +576,30 @@
                     <thead>
                       <tr>
                         <th>Platillo</th>
-                        <th>Precio</th>
                         <th>Cantidad</th>
-                        <th>Tiempo</th>
-                        <th></th>
+                        <th>Precio</th>
+                        <th>Ordenar</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Canelones de mariscos</td>
-                        <td><span class="price">$3.00</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>9 minutos</td>
+                      <tr th:each="i : ${items}">
+                        <td th:text="${i.idProducto.nombreProducto}"></td>
+                        <td ><!-- th:text="${i.cantidad}" -->
+                        <select>
+                        	<option>---</option>
+                        	<option th:text="${i.cantidad}"></option>
+                        	<option>2</option>
+                        	<option>3</option>
+                        	<option>4</option>
+                        	<option>5</option>
+                        	<option>Presonalizar</option>
+                        </select>
+                        </td>
+                        <td th:text="${i.idProducto.precio}"></td>
                         <td><button class="btn btn-primary" href="#" data-dismiss="modal">
                             <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
                           </button></td>
-                      </tr>
-                      <tr>
-                        <td>Mejillones al curry</td>
-                        <td><span class="price">$2.25</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>5 minutos</td>
-                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                          </button></td>
-                      </tr>
-                      <tr>
-                        <td>Pastel de pescado y mariscos</td>
-                        <td><span class="price">$3.00</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td>10 minutos</td>
-                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                          </button></td>
-                      </tr>
+                      </tr>      
                     </tbody>
                   </table>
                 </div>
@@ -703,37 +656,30 @@
                     <thead>
                       <tr>
                         <th>Platillo</th>
-                        <th>Precio</th>
                         <th>Cantidad</th>
-                        <th></th>
+                        <th>Precio</th>
+                        <th>Ordenar</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Pastel de mariscos y soda</td>
-                        <td><span class="price">$0.0</span></td>
-                        <td><input type="number" placeholder="---"></td>
+                      <tr th:each="i : ${items}">
+                        <td th:text="${i.idProducto.nombreProducto}"></td>
+                        <td ><!-- th:text="${i.cantidad}" -->
+                        <select>
+                        	<option>---</option>
+                        	<option th:text="${i.cantidad}"></option>
+                        	<option>2</option>
+                        	<option>3</option>
+                        	<option>4</option>
+                        	<option>5</option>
+                        	<option>Presonalizar</option>
+                        </select>
+                        </td>
+                        <td th:text="${i.idProducto.precio}"></td>
                         <td><button class="btn btn-primary" href="#" data-dismiss="modal">
                             <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
                           </button></td>
-                      </tr>
-                      <tr>
-                        <td>Carne asada,sopa de pollo y bebida</td>
-                        <td><span class="price">$0.00</span></td>
-                        <td><input type="number" placeholder="---"></td>
-
-                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                          </button></td>
-                      </tr>
-                      <tr>
-                        <td>Pie,</td>
-                        <td><span class="price">$0.00</span></td>
-                        <td><input type="number" placeholder="---"></td>
-                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-                          </button></td>
-                      </tr>
+                      </tr>      
                     </tbody>
                   </table>
                 </div>

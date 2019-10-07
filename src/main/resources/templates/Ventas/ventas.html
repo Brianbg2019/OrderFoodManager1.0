@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layouts/layout::plantilla">
+
+<head>
+	<meta charset="utf-8">
+    <title th:fragment="titulo">Ventas</title>
+   
+</head>
+<body>
+    <div th:fragment="contenido">
+        <!--VISTA PARA EL LISTADO Y AGREGADO-->
+        <div class="container">
+            <div class="table-wrapper">
+                <div class="row justify-content-center align-items-center col-10 offset-1">
+                            <h2 style="margin-bottom: 20px; font-size: 60px;">Ventas</h2>
+                        </div>
+                <table class="table table-hover" id="miTabla">
+                    <thead>
+                        <tr class="thead-dark">
+                            <th>Orden N°</th>
+                            <th>Cliente</th>
+                            <th>Total</th>
+                            <th>Vendedor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+	                        <tr th:each="i : ${items}">
+	                            <td th:text="${i.idOrden}"></td>
+	                            <td th:text=${i.idCliente.nombre}></td>
+	                            <td ></td>
+	                            <td th:text="${i.idUsuario.nombre}"></td>
+	                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <canvas id="barChart" style="display: block; width: 495px; height: 247px;" width="495" height="247" class="chartjs-render-monitor"></canvas>
+        </div>
+	</div>	
+</body>
+
+</html>
