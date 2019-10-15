@@ -10592,7 +10592,10 @@ a:focus {
   -webkit-box-flex: 1;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
-  background-color: #DADADA;
+ /*background-color: rgba(156, 217, 233, 0.281)*/
+ background-image: url('/img/fondoDashBoard.jpg');
+ background-size: 110%;
+ background-repeat: no-repeat;
 }
 
 .container,

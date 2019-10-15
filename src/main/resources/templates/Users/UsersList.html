@@ -3,7 +3,6 @@
 
 <head>
     <title th:fragment="titulo">Users</title>
-    <meta charset="utf-8">
 </head>
 
 <body>
@@ -21,8 +20,8 @@
         </div>
         <div class="container">
             <table class="table table-hover" id="miTabla">
-                <thead>
-                    <tr class="thead-dark">
+                <thead class="thead-dark">
+                    <tr>
                         <th>USER</th>
                         <th>ROL</th>
                         <th>Eliminar</th>
@@ -65,6 +64,27 @@
                         <div class="modal-footer">
                             <input type="button" class="btn btn-info" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-success" value="Agregar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+         <!--MODAL ELIMINAR-->
+       <div id="eliminar" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Eliminar Usuario</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Esta seguro de eliminar a este usuario?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
                         </div>
                     </form>
                 </div>

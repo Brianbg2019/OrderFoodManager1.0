@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:include="layouts/layout::plantilla">
 
-<head>
+<head th:include="component/assets::assets">
     <title th:fragment="titulo">Clientes</title>
 </head>
 
@@ -9,16 +9,15 @@
     <div th:fragment="contenido">
         <!--VISTA PARA EL LISTADO Y AGREGADO-->
         <div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
-     th:text="${mensaje}"
-     class="alert">
-             </div>
+            th:text="${mensaje}" class="alert">
+        </div>
         <div class="container">
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6" style="margin-bottom: 10px;">
-                            <a href="#addCliente" class="btn btn-secondary btn-lg" 
-                            data-toggle="modal">✚ Nuevo Cliente</a>
+                            <a href="#addCliente" class="btn btn-secondary btn-lg" data-toggle="modal">✚ Nuevo
+                                Cliente</a>
                         </div>
                         <div class="row justify-content-center align-items-center col-10 offset-1">
                             <h2><b>Clientes</b></h2>
@@ -27,8 +26,8 @@
                 </div>
                 <div class="container">
                     <table class="table table-hover" id="miTabla">
-                        <thead>
-                            <tr class="thead-dark">
+                        <thead class="thead-dark">
+                            <tr>
                                 <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Editar</th>
@@ -40,19 +39,21 @@
                                 <td th:text="${i.idCliente}"></td>
                                 <td th:text="${i.nombre}"></td>
                                 <td>
-                                    <a name="modificar" id="modificar" class="btn btn-primary" th:href="@{'/cliente/modificar/' + ${i.idCliente}}" role="button">Editar</a>
+                                    <a name="modificar" id="modificar" class="btn btn-primary"
+                                        th:href="@{'/cliente/modificar/' + ${i.idCliente}}" role="button">Editar</a>
                                 </td>
                                 <td>
                                     <a class="btn btn-danger delete" th:href="@{'/cliente/eliminar/' + ${i.idCliente}}">Eliminar</a>
                                 </td>
                             </tr>
+
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        <!--PARA AGREGAR UN NUEVO PRODUCTO-->
+        <!--MODAL ADD-->
         <div id="addCliente" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -75,7 +76,27 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <!--MODAL ELIMINAR-->
+       <div id="eliminar" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Eliminar Cliente</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Esta seguro de eliminar a este cliente?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 </body>
 
 </html>

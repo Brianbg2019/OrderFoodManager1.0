@@ -10,6 +10,6 @@ public class Test {
 
 	@GetMapping(value = "mostrar")
 	public String mostrar() {
-		return "vistaCliente/index";
+		return "OrdenControl";
 	}
 }

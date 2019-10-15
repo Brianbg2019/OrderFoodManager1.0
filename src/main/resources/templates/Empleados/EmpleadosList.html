@@ -14,7 +14,8 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6" style="margin-bottom: 10px;">
-                            <a href="#addEmpleado" class="btn btn-secondary btn-lg" data-toggle="modal"><i class="far fa-id-card"></i> Nuevo
+                            <a href="#addEmpleado" class="btn btn-secondary btn-lg" data-toggle="modal"><i
+                                    class="far fa-id-card"></i> Nuevo
                                 Empleado</a>
                         </div>
                         <div class="row justify-content-center align-items-center col-10 offset-1">
@@ -23,8 +24,8 @@
                     </div>
                 </div>
                 <table class="table table-hover" id="miTabla">
-                    <thead>
-                        <tr class="thead-dark">
+                    <thead class="thead-dark">
+                        <tr>
                             <th>Id</th>
                             <th>Nombre</th>
                             <th>DUI</td>
@@ -42,10 +43,12 @@
                             <td th:text="${i.telefono}"></td>
                             <td th:text="${i.idRol.rol}"></td>
                             <td>
-                                <a name="modificar" id="modificar" class="btn btn-primary" th:href="@{'/usuario/modificar/' + ${i.idUsuario}}" role="button">Editar</a>
+                                <a name="modificar" id="modificar" class="btn btn-primary"
+                                    th:href="@{'/usuario/modificar/' + ${i.idUsuario}}" role="button">Editar</a>
                             </td>
                             <td>
-                                <a class="btn btn-danger delete" th:href="@{'/usuario/eliminar/' + ${i.idUsuario}}">Eliminar</a>
+                                <a class="btn btn-danger delete"
+                                    th:href="@{'/usuario/eliminar/' + ${i.idUsuario}}">Eliminar</a>
                             </td>
                         </tr>
                     </tbody>
@@ -54,8 +57,6 @@
         </div>
 
         <!--PARA AGREGAR UN NUEVO PRODUCTO-->
-
-
         <div id="addEmpleado" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -87,6 +88,27 @@
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-success" value="Agregar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--MODAL ELIMINAR-->
+        <div id="eliminar" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Eliminar Empleado</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Esta seguro de eliminar a este empleado?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
                         </div>
                     </form>
                 </div>

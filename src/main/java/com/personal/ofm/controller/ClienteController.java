@@ -66,6 +66,8 @@ public class ClienteController {
 		return "redirect:/cliente/listar";
 	}
 	
+
+	
 	@GetMapping(value = "eliminar/{idCliente}")
 	public String eliminar(@PathVariable Long idCliente){
 		Clientes cliente = icliente.findById(idCliente).get();

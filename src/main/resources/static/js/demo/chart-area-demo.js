@@ -27,7 +27,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
-//bar
+/*
 var ctxB = document.getElementById("barChart").getContext('2d');
 var myBarChart = new Chart(ctxB, {
 type: 'bar',
@@ -64,4 +64,4 @@ beginAtZero: true
 }]
 }
 }
-});
+});*/

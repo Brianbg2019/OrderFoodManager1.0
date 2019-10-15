@@ -4,6 +4,7 @@
 <head>
     <title th:fragment="titulo">Productos</title>
 </head>
+
 <body>
     <div th:fragment="contenido">
         <!--VISTA PARA EL LISTADO Y AGREGADO-->
@@ -21,8 +22,8 @@
                     </div>
                 </div>
                 <table class="table table-hover" id="miTabla">
-                    <thead>
-                        <tr class="thead-dark">
+                    <thead class="thead-dark">
+                        <tr>
                             <th>Id Producto</th>
                             <th>Nombre</th>
                             <th>Categoría</th>
@@ -40,10 +41,8 @@
                             <td><a name="modificar" id="modificar" class="btn btn-primary"
                                     th:href="@{'/producto/modificar/' + ${i.idProducto}}" role="button">Editar</a></td>
                             <td>
-                            <!--div class="col-sm-4" style="margin-bottom: 10px;">
-                            <a href="#deleteEmployeeModal" class="btn btn-danger delete" data-toggle="modal">Eliminar</a>
-                              </div-->
-                            <a class="btn btn-danger delete"  th:href="@{'/producto/eliminar/' + ${i.idProducto}}">Eliminar</a>
+                                <a class="btn btn-danger delete"
+                                    th:href="@{'/producto/eliminar/' + ${i.idProducto}}">Eliminar</a>
                             </td>
                         </tr>
                     </tbody>
@@ -89,7 +88,7 @@
         </div>
 
         <!--ELIMINAR PRODUCTO-->
-        <div id="deleteEmployeeModal" class="modal fade">
+        <div id="deleteEmployeeModal" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
@@ -99,23 +98,16 @@
                         </div>
                         <div class="modal-body">
                             <p>¿Esta seguro de eliminar este producto?</p>
-                            
-                            <p class="text-warning"><small>Esta accion no se puede deshacer.</small></p>
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                         <input type="submit" class="btn btn-danger" value="Eliminar" >
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div th:include="component/scripts::script">
-    </div>
-  
-  
- 
 </body>
 
 </html>
