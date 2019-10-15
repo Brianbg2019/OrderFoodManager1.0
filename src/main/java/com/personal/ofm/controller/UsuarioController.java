@@ -62,7 +62,7 @@ public class UsuarioController {
 		return "Empleados/EmpleadosEdit";
 	}
 	
-	@PostMapping(value = "modificar")
+	@PostMapping(value = "modificar") 
 	public String editar(@RequestParam Long idUsuario, @RequestParam String nombre, @RequestParam String dui, @RequestParam String telefono,@RequestParam Integer idRol) {
 		Usuarios user = new Usuarios();
 		user.setIdUsuario(idUsuario);
@@ -71,6 +71,7 @@ public class UsuarioController {
 		user.setTelefono(telefono);
 		Roles roles = iroles.findById(idRol).get();
 		user.setIdRol(roles);
+		iusuario.save(user);
 		return "redirect:/usuario/listar";
 	}
 	

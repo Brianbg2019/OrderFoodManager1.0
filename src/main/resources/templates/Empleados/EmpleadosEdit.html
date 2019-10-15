@@ -10,7 +10,7 @@
 
         <div class="container">
             <h1 class="text-center mt-4">Modificar</h1>
-            <form action="/usuarios/modificar" method="POST">
+            <form action="/usuario/modificar" method="POST">
                 <div class="form-group row">
                     <!--label for="id" class="col-sm-12 col-form-label lb">Id:</label-->
                     <div class="col-sm-12">
@@ -42,7 +42,7 @@
                 <div class="form-group row">
                 	<label for="nombre" class="col-sm-12 col-form-label lb">Categoría:</label>
                 <div class="col-sm-12"> 
-                	<select name="roles" id="roles" class="form-control">
+                	<select name="idRol" id="roles" class="form-control">
                             <div th:each="r:${roles}">
                                 <option th:if="${r.idRol==items.idRol.idRol}" selected
                                     th:value="${r.idRol}" th:text="${r.rol}"></option>

@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author bryan.cabrerafgkah
+ * @author 
  */
 @Entity
 @Table(name = "categorias", catalog = "bd_comandas", schema = "")
@@ -47,7 +47,8 @@ public class Categorias implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "nombreCategoria", nullable = false, length = 100)
     private String nombreCategoria;
-    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoria")
+    private List<Productos> productos;
  
 
     public Categorias() {

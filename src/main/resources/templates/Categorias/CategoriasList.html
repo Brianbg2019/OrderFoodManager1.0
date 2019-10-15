@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" th:include="layouts/layout::plantilla">
 <head>
 	<title th:fragment="titulo">Listado de categorias</title>
+	<script th:src="/js/push.min.js"></script>
 </head>
 
 <body class="container">
@@ -62,14 +63,14 @@
 								<label for="name" class="col-sm-2 control-label">Categoria</label>
 
 								<input type="text" class="form-control col-6" name="nombreCategoria"
-									placeholder="Nombre de la categoria" required="required">
+									placeholder="Nombre de la categoria" required="required" autocomplete="off">
 								<input type="submit" class="btn btn-outline-success col-2 offset-1" value="Guardar">
 							</div>
 
 						</form>
 
 					</div>
-
+ 
 				</div>
 			</div>
 		</div>
@@ -94,6 +95,12 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	<!-- Notificaciones -->
+	<script type="text/javascript">
+		Push.create("Hola");
+	</script>
 </body>
 
 </html>
