@@ -10,6 +10,6 @@ public class Test {
 
 	@GetMapping(value = "mostrar")
 	public String mostrar() {
-		return "OrdenControl";
+		return "DMVentas";
 	}
 }
