@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>OrderFoodManager</title>
+<link rel="icon" href="/imgs/logo.png">
+<link th:href="@{/recursos/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+    type="text/css">
+ <link th:href="@{/css/freelancer.css}" rel="stylesheet">
+</head>
+<body>
+
+   <!--  <div  style="background-color: #dadada;">--> 
+<form action="">
+      <div class="titu"><img src="/imgs/logo.png" alt="logo" height="60px" title="Order Food Manager">
+        Order Food Manager
+         <!--  <img id="carro" src="/imgs/iconos/icon.png" width="70px" height="70px" data-target="#portfolioModal12"
+          data-toggle="modal"> --></div>
+   <div class="page-top">
+  </header>
+    <div class="modal-body text-center" >
+  <div class="container" style="text-align: center;">
+          <table class="table table-hover" id="miTabla">
+                    <thead>
+                        <tr class="thead-dark">
+                              <th>Orden N°</th>
+                              <th>Producto</th>
+                              <th>Cantidad</th>
+                              <th>Precio</th>
+                              <th>Total</th>
+                              <th>Editar</th>
+                              <th>Borrar</th>
+                            </tr>
+                          </thead>
+                          
+                          <tbody>
+                            <tr th:each="i : ${items}">
+                              <td th:text="${i.idOrden.idOrden}"></td>
+                              <td th:text="${i.idProducto.nombreProducto}"></td>
+                              <td th:text="${i.cantidad}"></td>
+                              <td th:text="${i.idProducto.precio}"></td>
+                              <td></td>
+                              <td> <a name="modificar" id="modificar" class="btn btn-outline-warning" role="button">Editar</a></td><!-- th:href="@{'/producto/modificar/' + ${i.idProducto}}" -->
+                              <td><a class="btn btn-outline-danger delete" >Eliminar</a></td><!-- th:href="@{'/producto/eliminar/' + ${i.idProducto}}" -->                            
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table class="table">
+                        <thead>
+                        	<tr>
+                        		<th>Total</th>
+                        		<td>Total a pagar</td>
+                        	</tr>
+                        </thead>
+                        </table>
+                      </div>
+                      <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                          <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png" ></i> Ordenar
+                        </button></td>                    
+                        <a name="regresar" id="regresar" class="btn btn-primary" href="/detalle/vista" role="button">
+                           <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i>Regresar</a>
+                           </div>
+                    
+                    
+            </div>                                                              
+</form>
+</div>
+
+     </div> 
+     </div>          
+</body>
+</html>

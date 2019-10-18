@@ -32,7 +32,7 @@
     <div>
       <div class="titu"><img src="/imgs/logo.png" alt="logo" height="60px" title="Order Food Manager">
         Order Food Manager
-        <a href="/detalle/mostrar"><img id="carro" src="/imgs/iconos/icon.png" width="70px" height="70px" data-target="#portfolioModal12"
+        <a href="/detalle/Mostrar"><img id="carro" src="/imgs/iconos/icon.png" width="70px" height="70px" data-target="#portfolioModal12"
           data-toggle="modal" ></a>
         </div> 
     </div>
@@ -96,11 +96,11 @@
 
 
         <!-- Portfolio Item 1 -->
-        <div class="col-md-6 col-lg-4" onclick="obtenerProductosCategoria('Plato fuerte')">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1" >
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
               <div class="portfolio-item-caption-content text-center text-white">
-                <i id="pf"> Platos Fuertes</i>
+                <i> Platos Fuertes</i>
               </div>
             </div>
             <img class="img-fluid" src="/imgs/pf.jpg" alt="Platos Fuertes">
@@ -238,8 +238,20 @@
                         <th>Ordenar</th>
                       </tr>
                     </thead>
-                    <tbody id="pet1">
-         
+                    <tbody>
+                      <tr th:each="i : ${items}">
+                        <td th:text="${i.idProducto.nombreProducto}"></td>
+                        <td ><!-- th:text="${i.cantidad}" -->
+                        <select>
+                        	<option>---</option>
+                        	<option th:text="${i.cantidad}"></option>
+                        </select>
+                        </td>
+                        <td th:text="${i.idProducto.precio}"></td>
+                        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
+                            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
+                          </button></td>
+                      </tr>      
                     </tbody>
                   </table>
                 </div>
@@ -660,16 +672,14 @@
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
- <!-- Plugin JavaScript -->
-  <script th:src="@{/recursos/jquery/jquery.min.js}"></script>
-  
+
+
   <!-- Bootstrap core JavaScript -->
+  <script th:src="@{/recursos/jquery/jquery.min.js}"></script>
   <script th:src="@{/recursos/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
   <!-- Plugin JavaScript -->
   <script th:src="@{/recursos/jquery-easing/jquery.easing.min.js}"></script>
-
-
 
   <!-- Contact Form JavaScript -->
   <script th:src="@{/js/sb-admin-2.js}"></script>
@@ -677,42 +687,6 @@
 
   <!-- Custom scripts for this template -->
   <script th:src="@{/js/main.js}"></script>
-
-<script>
-    function obtenerProductosCategoria (categoria){
-   
-      $.ajax({
-        url: "/producto/productos",
-        method: "Get",
-        data:{categoria:categoria},
-        success: procesar,
-        error: error
-      });
-    
-    }
-
-    function procesar(response){
-      var pet = $("#pet1");
-     
-
-       
-        response.forEach(i => {
-           pet.html("<tr>"+"<td>"+ i.idProducto+"</td>"
-             +"<td>"+ i.nombreProducto+"</td>"
-            +"<td>"+ i.precio+"</td>"
-              +"<td>"+ i.idCategoria.nombreCategoria+"</td>"+"</tr>");
-        
-        }); 
-
-    }
-
-    function error(response){
-      alert("Error");
-    }
-
-</script>
-
-
 
 </body>
 

@@ -28,6 +28,14 @@ public class DetalleController {
 		
 	return "vistaCliente/index";
 	}
+	@GetMapping(value = "mostrar")
+	public String Mostrar(Model m) {
+		List<Detalles> detalles = (List<Detalles>) idetalles.findAll();
+		m.addAttribute("items", detalles);
+		
+	return "vistaCliente/ordenes";
+	
+	}
 	
 
 }

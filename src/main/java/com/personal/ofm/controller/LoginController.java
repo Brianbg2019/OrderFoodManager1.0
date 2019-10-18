@@ -29,7 +29,7 @@ public class LoginController {
 	public String login(Model model, Principal principal, RedirectAttributes flash,@RequestParam(value="logout", required = false) String logout) { 
 		if(principal != null) {
 			flash.addFlashAttribute("Info","La sesión ya esta iniciada");
-			return "redirect:/vista/mostrar";
+			return "redirect:/home/vista";
 		}
 		return "index";
 	}

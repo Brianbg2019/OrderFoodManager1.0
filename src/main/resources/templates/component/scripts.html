@@ -23,9 +23,11 @@
         <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-		<!-- Notificaciones -->
-		<script th:src="@{/js/push.min.js}"></script>
-		<!-- Notificaciones -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <!-- Notificaciones -->
+        <script th:src="@{/js/push.min.js}"></script>
+        <!-- Notificaciones -->
         <!--SCRIPS PARA DATATABLE-->
         <!--#1
             <script>
@@ -45,6 +47,9 @@
             })	
         </script>-->
         <!--#2-->
+        <script th:include="this::funcion">
+            
+        </script>
         <script>
             $(document).ready(function () {
                 $('#miTabla').DataTable({

@@ -30,4 +30,9 @@ public class ProductosService {
 	public List<Productos> ListProducto(){
 		return ((List<Productos>) iproductos.findAll());
 	}
+	@Transactional
+	public List<Productos> ListProductoByCategpria(String categoria){
+		return iproductos.findByCategoria(categoria);
+	}
+	
 }
