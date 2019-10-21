@@ -2,10 +2,7 @@
 package com.personal.ofm.controller;
 
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -21,7 +18,6 @@ import com.personal.ofm.entity.Categorias;
 import com.personal.ofm.entity.Productos;
 import com.personal.ofm.repository.ICategorias;
 import com.personal.ofm.repository.IProductos;
-import com.personal.ofm.service.ProductosService;
 
 @Controller
 @RequestMapping("producto")
@@ -29,8 +25,6 @@ public class ProductoController {
 	
 	@Autowired
 	IProductos iproductos;
-	
-	
 	
 	@Autowired
 	ICategorias icategorias;
@@ -91,7 +85,6 @@ public class ProductoController {
 	@GetMapping(value = "productos", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Productos> productos(@RequestParam String categoria) {
-		
 		return iproductos.findByCategoria(categoria);
 	}
 }

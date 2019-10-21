@@ -5,21 +5,17 @@
     <div th:fragment="navbar">
         <div id="wrapper">
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark" id="accordionSidebar">
                 <!-- Sidebar - Brand -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home/vista">
-
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-hamburger"></i>
                     </div>
                     <div class="sidebar-brand-text mx-3">Order Food Manager</div>
-
                 </a>
 
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
-
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
                     <a class="nav-link" href="/home/vista">
@@ -29,7 +25,6 @@
 
                 <!-- Divider -->
                 <hr class="sidebar-divider">
-
                 <!-- Heading -->
                 <div class="sidebar-heading">
                     Personal
@@ -106,10 +101,10 @@
 
                     <!-- Topbar -->
                     <!-- Copiar nav*********** -->
-                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <nav class="navbar mb-4 static-top shadow">
 
                         <!-- Sidebar Toggle (Topbar) -->
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle">
                             <i class="fa fa-bars"></i>
                         </button>
 
@@ -127,16 +122,16 @@
                             </div>
                         </form-->
                         <ul class="navbar-nav ml-auto">
-                            <div class="container mt-3">
+                            <div class="container">
                                 <!-- Button to Open the Modal -->
                                 <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal"
                                     data-target="#myModal">
-                                    <div class="container-fluid text-center"><i class="fas fa-sign-out-alt si"></i>
+                                    <div class="container-fluid text-center"><i class="fas fa-sign-out-alt"></i>
                                     </div>
                                 </button>
 
                                 <!-- The Modal -->
-                                <div class="modal fade " id="myModal">
+                                <div class="modal" id="myModal">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
 
@@ -166,9 +161,7 @@
 
                     </div>
                 </div>
-                <!-- End of Main Content -->
             </div>
-            <!-- End of Content Wrapper -->
         </div>
     </div>
 </body>

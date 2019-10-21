@@ -1,20 +1,12 @@
 package com.personal.ofm.controller;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.personal.ofm.entity.Detalles;
 import com.personal.ofm.entity.Ordenes;
-import com.personal.ofm.entity.Productos;
-import com.personal.ofm.repository.IDetalles;
 import com.personal.ofm.repository.IOrdenes;
-import com.personal.ofm.repository.IProductos;
-import com.sun.org.apache.regexp.internal.recompile;
 
 @Controller
 @RequestMapping("orden")

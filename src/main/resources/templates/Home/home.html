@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	th:include="layouts/layout::plantilla">
-	
+<html xmlns:th="http://www.thymeleaf.org" th:include="layouts/layout::plantilla">
+
 <head>
-<title th:fragment="titulo">HOME</title>
+	<title th:fragment="titulo">HOME</title>
 </head>
-<body style="background-color:#00487A ">
+
+<body>
 	<div th:fragment="contenido">
-		<div class="container">
-			<h1 class="bienvenidos">BIENVENID@S</h1>
-			<img class="logo" src="/images/logo2.png" width="870px" height="680px">				
-		</div>		
+		<div style="
+			background-image: url('/img/fondoDashBoard.jpg');
+			background-repeat: no-repeat;
+			background-size: 110%;
+			margin-top: -24px;
+			">
+			<br>
+			<div class="container">
+				<h1 class="bienvenidos display-4 text-center">BIENVENID@S A ORDER FOOD MANAGER</h1>
+				<img class="logo" style="margin-left: 125px;" src="/images/logo2.png" width="850px" height="680px">
+			</div>
+
+		</div>
 	</div>
-   
+
 </body>
+
 </html>
