@@ -12,4 +12,9 @@ public class Test {
 	public String mostrar() {
 		return "OrdenControl";
 	}
+	
+	@GetMapping(value = "dmvista")
+	public String detalle() {
+		return "DMVentas";
+	}
 }
