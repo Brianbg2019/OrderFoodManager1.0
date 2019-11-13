@@ -13,34 +13,33 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6" style="margin-bottom: 10px;">
-                            <a href="#addEmployeeModal" class="btn btn-secondary btn-lg" data-toggle="modal"><i
+                            <a href="#addEmployeeModal" class="btn btn-outline-info btn-lg" data-toggle="modal"><i
                                     class="fas fa-fw fa-table"></i> Nuevo Producto</a>
                         </div>
                         <div class="row justify-content-center align-items-center col-10 offset-1">
-                            <h2 style="margin-bottom: 20px; font-size: 40px;">Producto</h2>
+                            <h4 class="display-4">LISTADO DE PRODUCTOS</h4>
                         </div>
                     </div>
                 </div>
-                <table class="table table-hover" id="miTabla">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Id Producto</th>
+                <table class="table table-bordered" id="miTabla">
+                    <thead class="bg-info">
+                        <tr class="text-light text-center">
+                            <th>ID</th>
                             <th>Nombre</th>
                             <th>Categoría</th>
                             <th>Precio</th>
-                            <th>Editar</th>
-                            <th>Borrar</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-dark">
                         <tr th:each="i : ${items}">
                             <td th:text="${i.idProducto}"></td>
                             <td th:text="${i.nombreProducto}"></td>
                             <td th:text="${i.idCategoria.nombreCategoria}"></td>
                             <td th:text="${i.precio}"></td>
-                            <td><a name="modificar" id="modificar" class="btn btn-primary"
-                                    th:href="@{'/producto/modificar/' + ${i.idProducto}}" role="button">Editar</a></td>
-                            <td>
+                            <td><a name="modificar" id="modificar" class="btn btn-warning"
+                                    th:href="@{'/producto/modificar/' + ${i.idProducto}}" role="button">Editar</a>
+
                                 <a class="btn btn-danger delete"
                                     th:href="@{'/producto/eliminar/' + ${i.idProducto}}">Eliminar</a>
                             </td>
@@ -55,22 +54,22 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form th:action="@{/producto/guardar}" method="post">
-                        <div class="modal-header">
-                            <h4 class="modal-title ti">NUEVO PRODUCTO</h4>
+                        <div class="modal-header bg-secondary">
+                            <h4 class="modal-title text-light">NUEVO PRODUCTO</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label class="lb">Nombre Producto</label>
-                                <input type="text" name="nombreProducto" autocomplete="off" class="form-control"
+                                <label>Nombre Producto: </label>
+                                <input type="text" name="nombreProducto" class="form-control"
                                     required>
                             </div>
                             <div class="form-group">
-                                <label class="lb">Precio</label>
+                                <label>Precio: </label>
                                 <input type="text" name="precio" autocomplete="off" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="categoria" class="lb">Categoria</label>
+                                <label for="categoria">Categoria: </label>
                                 <!--<input type="number" name="categoria" class="form-control" required>-->
                                 <select name="categoria" id="categoria" class="form-control" required>
                                     <option th:each="c:${categoria}" th:value="${c.idCategoria}"
@@ -79,7 +78,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="button" class="btn btn-light" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-success" value="Agregar">
                         </div>
                     </form>

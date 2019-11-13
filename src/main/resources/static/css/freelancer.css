@@ -6052,9 +6052,8 @@ a.close.disabled {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 1rem 1rem;
-  border-bottom: 0 solid #dee2e6;
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
+  border-top-left-radius: 0.70rem;
+  border-top-right-radius: 0.70rem;
 }
 
 .modal-header .close {

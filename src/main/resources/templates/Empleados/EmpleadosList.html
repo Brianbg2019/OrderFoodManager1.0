@@ -14,28 +14,27 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6" style="margin-bottom: 10px;">
-                            <a href="#addEmpleado" class="btn btn-secondary btn-lg" data-toggle="modal"><i
+                            <a href="#addEmpleado" class="btn btn-outline-info btn-lg" data-toggle="modal"><i
                                     class="far fa-id-card"></i> Nuevo
                                 Empleado</a>
                         </div>
                         <div class="row justify-content-center align-items-center col-10 offset-1">
-                            <h2 style="margin-bottom: 20px; font-size: 40px;">LISTA DE EMPLEADOS</h2>
+                            <h2 class="display-4">LISTA DE EMPLEADOS</h2>
                         </div>
                     </div>
                 </div>
-                <table class="table table-hover" id="miTabla">
-                    <thead class="thead-dark">
-                        <tr>
+                <table class="table table-bordered" id="miTabla">
+                    <thead class="bg-info">
+                        <tr class="text-light">
                             <th>Id</th>
                             <th>Nombre</th>
                             <th>DUI</td>
                             <th>Teléfono</th>
                             <th>Cargo</th>
-                            <th>Editar</th>
-                            <th>Borrar</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-dark">
                         <tr th:each="i : ${items}">
                             <td th:text="${i.idUsuario}"></td>
                             <td th:text="${i.nombre}"></td>
@@ -43,10 +42,9 @@
                             <td th:text="${i.telefono}"></td>
                             <td th:text="${i.idRol.rol}"></td>
                             <td>
-                                <a name="modificar" id="modificar" class="btn btn-primary"
+                                <a name="modificar" id="modificar" class="btn btn-warning"
                                     th:href="@{'/usuario/modificar/' + ${i.idUsuario}}" role="button">Editar</a>
-                            </td>
-                            <td>
+
                                 <a class="btn btn-danger delete"
                                     th:href="@{'/usuario/eliminar/' + ${i.idUsuario}}">Eliminar</a>
                             </td>
@@ -61,8 +59,8 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form th:action="@{/usuario/guardar}" method="post">
-                        <div class="modal-header">
-                            <h4 class="modal-title">NUEVO EMPLEADO</h4>
+                        <div class="modal-header bg-secondary">
+                            <h4 class="modal-title text-light">NUEVO EMPLEADO</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
@@ -86,7 +84,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="button" class="btn btn-light" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-success" value="Agregar">
                         </div>
                     </form>

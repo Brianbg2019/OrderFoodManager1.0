@@ -37,7 +37,6 @@ public class CategoriaController {
 	public String save(HttpServletRequest request) {
 		Categorias cat = new Categorias();
 		cat.getNombreCategoria();
-		
 		return "redirect:/Categorias/CategoriasList";
 	}
 	
@@ -53,8 +52,7 @@ public class CategoriaController {
 	@GetMapping(value = "listar")
 	public String listar(Model m) {
 		m.addAttribute("items", (List<Categorias>) cService.ListCategoria()) ;
-		return "Categorias/CategoriasList";
-		
+		return "Categorias/CategoriasList";	
 	}
 	
 	@GetMapping("eliminar/{idCategoria}")

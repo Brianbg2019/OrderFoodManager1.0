@@ -30,7 +30,20 @@
 		</table>
 	</div>
 	<script>
-
+		$(document).ready(function () {
+			
+			$.ajax({
+				method: "GET",
+				url: "/../..",
+				data: {},
+				success: function (response) {
+					
+				},
+				error: function (response){
+					alert('#ERROR!');
+				}
+			});
+		});
 	</script>
 </body>
 

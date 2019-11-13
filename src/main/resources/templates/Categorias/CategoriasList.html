@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:include="layouts/layout::plantilla">
+
 <head>
 	<title th:fragment="titulo">Listado de categorias</title>
 	<script th:src="/js/push.min.js"></script>
@@ -9,30 +10,44 @@
 
 	<div th:fragment="contenido">
 		<div class="col-10 offset-1 mt-3">
-			<button type="button" class="btn btn-secondary btn-lg" data-toggle="modal"
-				data-target="#ModalAddCategoria">✚ Nueva Categoria</button>
+			<!--Formulario para agregar nueva categoria-->
+			<div id="muestra" class="container mt-3">
+				<form th:action="@{/categoria/verificar}" method="post">
+					<div class="form-group row justify-content-end">
+						<input type="text" class="form-control col-4" name="nombreCategoria" placeholder="Ingrese una categoria" required
+							autocomplete="off">
+						<input type="submit" class="btn btn-outline-success ml-2" value="Agregar">
+					</div>
+				</form>
+			</div>
+			<!--boton para agregar nueva categoria-->
+			<button id="cate" type="button" class="btn btn-outline-info btn-lg"><i class="far fa-clipboard"></i> Nueva
+				Categoria</button>
 		</div>
+
+
+
 		<div class="row justify-content-center align-items-center col-10 offset-1">
-			<h1 style="margin-bottom: 20px;">Lista de Categorias</h1>
+			<h1 class="display-4">LISTADO DE CATEGORIAS</h1>
 		</div>
-		<div class="container">
-			<table class="table table-hover" id="miTabla">
-				<thead class="thead-dark">
-					<tr>
+		<div class="container prueba2">
+			<table class="table table-bordered" id="miTabla">
+				<thead class="bg-info">
+					<tr class="text-light">
 						<th>ID</th>
 						<th>Categoria</th>
 						<th>Editar</th>
 						<th>Eliminar</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="text-dark">
 					<tr th:each="i : ${items}">
 						<td th:text="${i.idCategoria}"></td>
 						<td th:text="${i.nombreCategoria}"></td>
 						<td>
 							<!--form method="post" action="/editar">
 					      <input type="hidden" name="id_edit" th:value="${i.idCategoria}"-->
-							<a name="modificar" id="modificar" class="btn btn-primary"
+							<a name="modificar" id="modificar" class="btn btn-warning"
 								th:href="@{'/categoria/modificar/' + ${i.idCategoria}}" role="button">Editar</a>
 							<!-- /form-->
 						</td>
@@ -45,58 +60,29 @@
 			</table>
 		</div>
 
-		<!-- The Modal -->
-		<div class="modal fade" id="ModalAddCategoria">
-			<div class="modal-dialog modal-lg">
+		<!--MODAL ELIMINAR-->
+		<div id="eliminar" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
 				<div class="modal-content">
-
-					<!-- Modal Header -->
-					<div class="modal-header bg-info">
-						<h4 class="modal-title">AGREGAR CATEGORIA</h4>
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-
-					<!-- Modal body -->
-					<div class="modal-body">
-						<form th:action="@{/categoria/verificar}" method="post">
-							<div class="form-group row">
-								<label for="name" class="col-sm-2 control-label">Categoria</label>
-
-								<input type="text" class="form-control col-6" name="nombreCategoria"
-									placeholder="Nombre de la categoria" required="required" autocomplete="off">
-								<input type="submit" class="btn btn-outline-success col-2 offset-1" value="Guardar">
-							</div>
-
-						</form>
-
-					</div>
- 
+					<form>
+						<div class="modal-header">
+							<h4 class="modal-title">Eliminar Categoria</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">
+							<p>¿Esta seguro de eliminar esta categoria?</p>
+						</div>
+						<div class="modal-footer">
+							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+							<input type="submit" class="btn btn-danger" value="Eliminar">
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
-		 <!--MODAL ELIMINAR-->
-		 <div id="eliminar" class="modal fade" tabindex="-1" role="dialog">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<form>
-							<div class="modal-header">
-								<h4 class="modal-title">Eliminar Categoria</h4>
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							</div>
-							<div class="modal-body">
-								<p>¿Esta seguro de eliminar esta categoria?</p>
-							</div>
-							<div class="modal-footer">
-								<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-								<input type="submit" class="btn btn-danger" value="Eliminar">
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
 	</div>
-	
-	
+
+
 	<!-- Notificaciones -->
 	<script type="text/javascript">
 		Push.create("Hola");

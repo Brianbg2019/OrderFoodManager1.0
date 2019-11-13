@@ -9,25 +9,25 @@
     <div th:fragment="contenido">
         <div class="table-title">
             <div class="col-sm-6" style="margin-bottom: 10px; margin-left: 110px;">
-                <a href="#Perfil" class="btn btn-secondary btn-lg" data-toggle="modal">
+                <a href="#Perfil" class="btn btn-outline-info btn-lg" data-toggle="modal">
                     <i class="fas fa-users"></i> NEW USER
                 </a>
             </div>
 
             <div class="row justify-content-center align-items-center col-10 offset-1">
-                <h2 style="margin-bottom: 20px; font-size: 40px;">USERS</h2>
+                <h4 class="display-4">USERS</h4>
             </div>
         </div>
         <div class="container">
-            <table class="table table-hover" id="miTabla">
-                <thead class="thead-dark">
-                    <tr>
+            <table class="table table-bordered" id="miTabla">
+                <thead class="bg-info">
+                    <tr class="text-light">
                         <th>USER</th>
                         <th>ROL</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-dark">
                     <tr th:each="i : ${items}">
                         <td th:text="${i.user}"></td>
                         <td th:text="${i.role}"></td>
@@ -43,26 +43,26 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form th:action="@{/user/guardar}" method="POST">
-                        <div class="modal-header">
-                            <h4 class="modal-title ti">NEW USER</h4>
+                        <div class="modal-header bg-secondary">
+                            <h4 class="modal-title text-light">NEW USER</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="name" class="lb">Email:</label>
+                                <label for="name">Email:</label>
                                 <input type="email" name="user" autocomplete="off" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="name" class="lb">Contraseña:</label>
+                                <label for="name">Contraseña:</label>
                                 <input type="password" name="password" autocomplete="off" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="name" class="lb">Rol:</label>
+                                <label for="name">Rol:</label>
                                 <input type="text" name="role" autocomplete="off" class="form-control" required>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="button" class="btn btn-info" data-dismiss="modal" value="Cancelar">
+                            <input type="button" class="btn btn-light" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-success" value="Agregar">
                         </div>
                     </form>

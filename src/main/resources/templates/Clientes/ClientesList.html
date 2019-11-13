@@ -16,30 +16,30 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6" style="margin-bottom: 10px;">
-                            <a href="#addCliente" class="btn btn-secondary btn-lg" data-toggle="modal">✚ Nuevo
+                            <a href="#addCliente" class="btn btn-outline-info btn-lg" data-toggle="modal"><i class="far fa-address-book"></i> Nuevo
                                 Cliente</a>
                         </div>
                         <div class="row justify-content-center align-items-center col-10 offset-1">
-                            <h2><b>Clientes</b></h2>
+                            <h4 class="display-4">LISTADO DE CLIENTES</h4>
                         </div>
                     </div>
                 </div>
                 <div class="container">
-                    <table class="table table-hover" id="miTabla">
-                        <thead class="thead-dark">
-                            <tr>
+                    <table class="table table-bordered" id="miTabla">
+                        <thead class="bg-info">
+                            <tr class="text-light">
                                 <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Editar</th>
                                 <th>Borrar</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-dark">
                             <tr th:each="i : ${items}">
                                 <td th:text="${i.idCliente}"></td>
                                 <td th:text="${i.nombre}"></td>
                                 <td>
-                                    <a name="modificar" id="modificar" class="btn btn-primary"
+                                    <a name="modificar" id="modificar" class="btn btn-warning"
                                         th:href="@{'/cliente/modificar/' + ${i.idCliente}}" role="button">Editar</a>
                                 </td>
                                 <td>
@@ -58,8 +58,8 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form th:action="@{/cliente/guardar}" method="post">
-                        <div class="modal-header">
-                            <h4 class="modal-title ti">NUEVO CLIENTE</h4>
+                        <div class="modal-header bg-secondary">
+                            <h4 class="modal-title text-light">NUEVO CLIENTE</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="button" class="btn btn-light" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-success" value="Agregar">
                         </div>
                     </form>

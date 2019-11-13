@@ -9,56 +9,46 @@
     <div th:fragment="contenido">
         <!--VISTA PARA EL LISTADO Y AGREGADO-->
         <div class="col-10 offset-1 mt-3">
-            <button id="modal" type="button" class="btn btn-secondary btn-lg" data-toggle="modal"
-                data-target="#ModalAddRol"><i class="fas fa-user-cog"></i> NUEVO ROL</button>
+
+            <!--Formulario para agregar nuevo rol-->
+			<div id="muestr" class="container mt-3">
+                    <form th:action="@{/roles/guardar}" method="post">
+                        <div class="form-group row justify-content-end">
+                            <input type="text" class="form-control col-4" name="rol" placeholder="Ingrese nuevo rol" required
+                                autocomplete="off">
+                            <input type="submit" class="btn btn-outline-success ml-2" value="Agregar">
+                        </div>
+                    </form>
+                </div>
+
+
+            <button id="rol" type="button" class="btn btn-outline-info btn-lg"><i class="fas fa-user-cog"></i> NUEVO ROL</button>
         </div>
         <div class="row justify-content-center align-items-center col-10 offset-1">
-            <h1 style="margin-bottom: 20px;">LISTADO DE ROLES</h1>
+            <h1 class="display-4">LISTADO DE ROLES</h1>
         </div>
 
         <div class="container">
-            <table class="table table-hover" id="miTabla">
-                <thead class="thead-dark">
-                    <tr>
+            <table class="table table-bordered" id="miTabla">
+                <thead class="bg-info">
+                    <tr class="text-light">
                         <th>ID</th>
                         <th>Rol</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-dark">
                     <tr th:each="i : ${items}">
                         <td th:text="${i.idRol}"></td>
                         <td th:text="${i.rol}"></td>
-                        <td><a name="modificar" id="modificar" class="btn btn-primary"
+                        <td><a name="modificar" id="modificar" class="btn btn-warning"
                                 th:href="@{'/roles/modificar/' + ${i.idRol}}">Editar</a></td>
                         <td><a class="btn btn-danger"
                                 th:href="@{'/roles/eliminar/' + ${i.idRol}}">Eliminar</a></td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-
-        <!-- Modal para guardar -->
-        <div class="modal fade" id="ModalAddRol">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header bg-info">
-                        <h4 class="modal-title ti">AGREGAR ROL</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <form th:action="@{/roles/guardar}" method="post">
-                            <div class="form-group row">
-                                <label for="name" class="col-sm-2 control-label lb">Rol:</label>
-                                <input type="text" class="form-control col-6" name="rol" placeholder="Nuevo rol"
-                                    required="required">
-                                <input type="submit" class="btn btn-outline-success col-2 offset-1" value="Guardar">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
 
          <!--MODAL ELIMINAR-->
@@ -74,7 +64,7 @@
                             <p>¿Esta seguro de eliminar este rol?</p>
                         </div>
                         <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="button" class="btn btn-light" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-danger" value="Eliminar">
                         </div>
                     </form>

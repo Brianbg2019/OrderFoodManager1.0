@@ -27,7 +27,5 @@ public class OrdenController {
 		List<Ordenes> ordenes = (List<Ordenes>) iordenes.findAll();
 		m.addAttribute("items", ordenes);
 		return "Ventas/ventas";
-	}
-	
-	
+	}		
 }

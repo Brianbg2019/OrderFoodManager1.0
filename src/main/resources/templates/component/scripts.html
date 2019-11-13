@@ -44,7 +44,18 @@
                     },
                 });
                 $('.dataTables_length').addClass('bs-select');
+                $('#muestra').hide();
+                $('#muestr').hide();
+                $('#cate').click(muestrame);
+                $('#rol').click(mostrar);
             });
+
+            function muestrame(){
+                $('#muestra').slideToggle(600);
+            }
+            function mostrar(){
+                $('#muestr').slideToggle(600);
+            }
         </script>
     </div>
 </body>
