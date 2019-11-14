@@ -2,162 +2,120 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>ControlOrden</title>
-    <link rel="icon" href="/img/logo2.png">
-    <style>
-        #fondo {
-            /*background-image: url('/img/fondo13.jpg');
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<title>ControlOrden</title>
+<link rel="icon" href="/img/logo2.png">
+<style>
+#fondo {
+	/*background-image: url('/img/fondo13.jpg');
             background-repeat: no-repeat;
             background-size: 100%;*/
-            background-color: rgba(185, 185, 185, 0.822);
-        }
-        .formulario {
-            position: relative;
-            font-family: Arial;
-        }
-        .formulario select {
-            padding: 10px;
-            border: 5px;
-            border-radius: 5px;
-            color: #fff;
-            background-color: rgba(255, 0, 0, 0.637);
-        }
-        .formulario select option {
-            background-color: black;
-            border: 5px;
-        }
-    </style>
+	background-color: rgba(185, 185, 185, 0.822);
+}
+
+.formulario {
+	position: relative;
+	font-family: Arial;
+}
+
+.formulario select {
+	padding: 10px;
+	border: 5px;
+	border-radius: 5px;
+ 	background-color:red;
+}
+
+
+
+</style>
 </head>
 
-<body id="fondo">
-    <div class="container">
-        <h1 class="display-4 mt-3 text-center">Control de Ordenes</h1>
-        <table class="table table-dark mt-5" id="tabla">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>ID</th>
-                    <th>CLIENTE</th>
-                    <th>ORDEN</th>
-                    <th>TOTAL</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td>01</td>
-                    <td>Rafael Chavez</td>
-                    <td>01</td>
-                    <td>$0.0</td>
-                    <td>
-                        <div class="formulario">
-                            <select name="estado" id="estado">
-                                <option value="pendiente">Pendiente</option>
-                                <option value="proceso">En Proceso</option>
-                                <option value="finalizado">Finalizado</option>
-                            </select>
-                            <input type="submit" class="btn btn-info" id="enviar">
-                            <h1 id="contenedor"></h1>
-                        </div>
-                        <!--<button class="btn btn-danger" id="pendiente">Pendiente</button>
-                        <button class="btn btn-info" id="proceso">EnProceso</button>
-                        <button class="btn btn-warning" id="finalizado">Finalizado</button>-->
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>02</td>
-                    <td>Rafael Chavez</td>
-                    <td>02</td>
-                    <td>$0.0</td>
-                    <td>
-                        <div class="formulario">
-                            <select name="estado" id="estado">
-                                <option value="pendiente">Pendiente</option>
-                                <option value="proceso">En Proceso</option>
-                                <option value="finalizado">Finalizado</option>
-                            </select>
-                            <input type="submit" class="btn btn-info">
-                        </div>
-                        <!--<button class="btn btn-danger" id="pendiente">Pendiente</button>
-                        <button class="btn btn-info" id="proceso">EnProceso</button>
-                        <button class="btn btn-warning" id="finalizado">Finalizado</button>-->
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>03</td>
-                    <td>Rafael Chavez</td>
-                    <td>03</td>
-                    <td>$0.0</td>
-                    <td>
-                        <div class="formulario">
-                            <select name="estado" id="estado">
-                                <option value="pendiente">Pendiente</option>
-                                <option value="proceso">En Proceso</option>
-                                <option value="finalizado">Finalizado</option>
-                            </select>
-                            <input type="submit" class="btn btn-info">
-                        </div>
-                        <!--<button class="btn btn-danger" id="pendiente">Pendiente</button>
-                        <button class="btn btn-info" id="proceso">EnProceso</button>
-                        <button class="btn btn-warning" id="finalizado">Finalizado</button>-->
+<body id="fondo"
+	style="background-image: url('/img/fondoDashBoard.jpg');">
+	<div class="container">
+		<h1 class="display-4 mt-3 text-center">Control de Ordenes</h1>
+		<table class="table table-dark mt-5" id="tabla">
+			<thead>
+				<tr>
+					<th></th>
+					<th>ID</th>
+					<th>CLIENTE</th>
+					<th>ORDEN</th>
+					<th>TOTAL</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td>01</td>
+					<td>Rafael Chavez</td>
+					<td>01</td>
+					<td>$0.0</td>
+					<td>
+						<div class="formulario">
+							<select class="estado">
+								<option value="01" class="uno">Pendiente</option>
+								<option value="02" class="dos">En Proceso</option>
+								<option value="03" class="tres">Finalizado</option>
+							</select> <input type="submit" class="btn btn-info" id="enviar">
+							<h1 id="contenedor"></h1>
+						</div> 
+					</td>
+					<tr>
+							<td></td>
+							<td>01</td>
+							<td>Rafael Chavez</td>
+							<td>01</td>
+							<td>$0.0</td>
+							<td>
+								<div class="formulario">
+									<select class="estado">
+										<option value="01" class="uno">Pendiente</option>
+										<option value="02">En Proceso</option>
+										<option value="03">Finalizado</option>
+									</select> <input type="submit" class="btn btn-info" id="enviar">
+									<h1 id="contenedor"></h1>
+								</div> 
+							</td>
+						</tr>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script>
+		//Función creada solo con JavaScript nativo
+		 /* //onchange="cambiarColor(this.value)"
+		 function cambiarColor(valor){
+			if (valor == 01) {
+				document.getElementById("estado").style.backgroundColor="red";
+			}else if(valor == 02){
+				document.getElementById("estado").style.backgroundColor="yellow";
+			}else if(valor == 03){
+				document.getElementById("estado").style.backgroundColor="green";
+			}
+		}  */ 
+		 $(document).ready(inicio);
+		function inicio(){
+			$("select").change(function(){
+				if($(".estado") == $(".uno")){
+					$(this).css("background-color","red");
+				}else if(this == 02){
+					$(this).css("background-color","yellow");
+				}else{
+					$(this).css("background-color","green");
+				}
+			});
+		} 
 
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>04</td>
-                    <td>Rafael Chavez</td>
-                    <td>04</td>
-                    <td>$0.0</td>
-                    <td>
-                        <div class="formulario">
-                            <select name="estado" id="estado">
-                                <option value="pendiente">Pendiente</option>
-                                <option value="proceso">En Proceso</option>
-                                <option value="finalizado">Finalizado</option>
-                            </select>
-                            <input type="submit" class="btn btn-info">
-                        </div>
-                        <!--<button class="btn btn-danger" id="pendiente">Pendiente</button>
-                        <button class="btn btn-info" id="proceso">EnProceso</button>
-                        <button class="btn btn-warning" id="finalizado">Finalizado</button>-->
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>05</td>
-                    <td>Rafael Chavez</td>
-                    <td>05</td>
-                    <td>$0.0</td>
-                    <td>
-                        <div class="formulario">
-                            <select name="estado" id="estado">
-                                <option value="pendiente">Pendiente</option>
-                                <option value="proceso">En Proceso</option>
-                                <option value="finalizado">Finalizado</option>
-                            </select>
-                            <input type="submit" class="btn btn-info">
-                        </div>
-                        <!--<button class="btn btn-danger" id="pendiente">Pendiente</button>
-                        <button class="btn btn-info" id="proceso">EnProceso</button>
-                        <button class="btn btn-warning" id="finalizado">Finalizado</button>-->
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <script>
-        $(document).ready(function () {
-            var estado = $("#estado option:selected").val();
-        });
+		 
     </script>
 </body>
 

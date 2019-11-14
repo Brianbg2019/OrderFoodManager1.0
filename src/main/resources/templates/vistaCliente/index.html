@@ -549,18 +549,18 @@
 
       response.forEach(i => {
         pet.append("<tr>" + "<td>" + i.nombreProducto + "</td>"
-          + "<td>" + "<input id='cantidad' value='1'>" + "</td>"
-          + "<td>" + i.precio + "</td>"
+          + "<td>" + "<input id='cantidad' value='1' type='number'> " + "</td>"
+          + "<td>"+"<p>$" + i.precio + "</p>"+"</td>"
           + "<td>" + "<button class='btn btn-primary' href='#'><i><img src='https://img.icons8.com/metro/26/000000/shopping-basket.png'>Ordenar</i></button>" + "</tr>");
 
       });
 
-      response.forEach(i => {
+      /* response.forEach(i => {
         pet.html("<tr>" + "<td>" + i.idProducto + "</td>"
           + "<td>" + i.nombreProducto + "</td>"
           + "<td>" + i.precio + "</td>"
           + "<td>" + i.idCategoria.nombreCategoria + "</td>" + "</tr>");
-      });
+      }); */
     }
 
     function error(response) {

@@ -61,8 +61,6 @@ public class Usuarios implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "telefono", nullable = false, length = 20)
     private String telefono;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
-    private List<Ordenes> ordenesList;
     @JoinColumn(name = "idRol", referencedColumnName = "idRol", nullable = false)
     @ManyToOne(optional = false)
     private Roles idRol;
@@ -113,14 +111,6 @@ public class Usuarios implements Serializable {
         this.telefono = telefono;
     }
 
-    @XmlTransient
-    public List<Ordenes> getOrdenesList() {
-        return ordenesList;
-    }
-
-    public void setOrdenesList(List<Ordenes> ordenesList) {
-        this.ordenesList = ordenesList;
-    }
 
     public Roles getIdRol() {
         return idRol;

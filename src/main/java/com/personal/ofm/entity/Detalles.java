@@ -38,11 +38,11 @@ public class Detalles implements Serializable {
     @Basic(optional = false)
     @Column(name = "idDetalle", nullable = false)
     private Long idDetalle;
-    @Column(name = "cantidad")
-    private Integer cantidad;
     @JoinColumn(name = "idOrden", referencedColumnName = "idOrden", nullable = false)
     @ManyToOne(optional = false)
     private Ordenes idOrden;
+    @Column(name = "cantidad")
+    private Integer cantidad;
     @JoinColumn(name = "idProducto", referencedColumnName = "idProducto", nullable = false)
     @ManyToOne(optional = false)
     private Productos idProducto;

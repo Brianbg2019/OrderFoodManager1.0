@@ -66,9 +66,6 @@ public class Ordenes implements Serializable {
     @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
     @ManyToOne(optional = false)
     private Clientes idCliente;
-    @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", nullable = false)
-    @ManyToOne(optional = false)
-    private Usuarios idUsuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idOrden")
     private List<Detalles> detallesList;
 
@@ -126,13 +123,6 @@ public class Ordenes implements Serializable {
         this.idCliente = idCliente;
     }
 
-    public Usuarios getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuarios idUsuario) {
-        this.idUsuario = idUsuario;
-    }
 
     @XmlTransient
     public List<Detalles> getDetallesList() {

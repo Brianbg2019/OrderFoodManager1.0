@@ -2,34 +2,38 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Ordenes</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<link rel="icon" href="/img/logo2.png">
+<title>Ordenes</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="icon" href="/img/logo2.png">
 </head>
-
-<body class="container" style="background-color: rgb(59, 59, 59);">
+<body class="container" style="background: linear-gradient(355deg, rgba(0,0,0,1), rgba(137,26,36,1) 100%); height:789px; background-repeat: no-repeat;">
 	<div>
 		<br>
-		<h1 class="display-4 text-center" style="color: #fff;">Detalle Orden</h1>
+		<h1 class="display-4 text-center" style="color: #fff;">Detalle de
+			su Orden</h1>
 		<br>
 		<table class="table table-hover">
-			<thead class="thead-dark">
+			<thead style="background-color: rgba(0,0,0,1); color: rgba(137,26,36,1); font-size: 20px;">
 				<tr>
 					<th>Orden N°</th>
 					<th>Cliente</th>
 					<th>Estado</th>
 				</tr>
 			</thead>
-			<tbody id="contenedor">
+			<tbody id="contenedor" style="color: rgba(137,26,36,1); font-size: 15px;">
 			</tbody>
 		</table>
 	</div>
-	<script>
+	<!-- <script>
 		$(document).ready(function () {
 			
 			$.ajax({
@@ -44,7 +48,7 @@
 				}
 			});
 		});
-	</script>
+	</script> -->
 </body>
 
 </html>
