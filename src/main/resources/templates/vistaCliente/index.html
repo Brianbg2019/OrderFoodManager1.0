@@ -22,14 +22,13 @@
   <link th:href="@{/css/freelancer.css}" rel="stylesheet">
 </head>
 
-<body>
+<body >
   <!--ENCABEZADO DE LA PAGINA hacer referencia a la lista con el hfre  de la vista de la orden-->
   <header>
     <div>
       <div class="titu"><img src="/imgs/logo.png" alt="logo" height="60px" title="Order Food Manager">
         Order Food Manager
-        <a href="/detalle/mostrar"><img id="carro" src="/imgs/iconos/icon.png" width="70px" height="70px"
-            data-target="#portfolioModal12" data-toggle="modal"></a>
+        <a href="/detalle/mostrar"><img id="carro" src="/imgs/iconos/icon.png" width="70px" height="70px"></a>
       </div>
     </div>
   </header>
@@ -87,6 +86,7 @@
         <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
         <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
         <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
 
         <!-- Portfolio Item 1 -->
         <div class="col-md-6 col-lg-4" onclick="obtenerProductosCategoria('Plato fuerte', '#pet1')">
@@ -184,7 +184,6 @@
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-
   <!-- Portfolio Modal 1 -->
   <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog"
     aria-labelledby="portfolioModal1Label" aria-hidden="true">
@@ -214,6 +213,7 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
+                        <th>Precentación</th>
                         <th>Platillo</th>
                         <th>Cantidad</th>
                         <th>Precio</th>
@@ -532,7 +532,6 @@
 
   <script>
     function obtenerProductosCategoria(categoria, id) {
-
       $.ajax({
         url: "/producto/productos",
         method: "Get",
@@ -545,27 +544,27 @@
     function procesar(response, id) {
       var pet = $(id);
       pet.html("");
-
-
       response.forEach(i => {
-        pet.append("<tr>" + "<td>" + i.nombreProducto + "</td>"
-          + "<td>" + "<input id='cantidad' value='1' type='number'> " + "</td>"
+        pet.append("<tr>" + "<td><img src=" + i.imagen + "/ width='80px' height='80px'></td>"
+          +"<td>" + i.nombreProducto + "</td>"
+          + "<td>" + "<input id='cantidad' value='1' type='number' style='border: 0; background-color: white;' " + "</td>"
           + "<td>"+"<p>$" + i.precio + "</p>"+"</td>"
-          + "<td>" + "<button class='btn btn-primary' href='#'><i><img src='https://img.icons8.com/metro/26/000000/shopping-basket.png'>Ordenar</i></button>" + "</tr>");
+          + "<td>" + "<button class='btn btn-primary' href='#'><i><img><i class='fas fa-shopping-basket'></i> Ordenar</i></button>" + "</tr>");
 
       });
-
-      /* response.forEach(i => {
-        pet.html("<tr>" + "<td>" + i.idProducto + "</td>"
-          + "<td>" + i.nombreProducto + "</td>"
-          + "<td>" + i.precio + "</td>"
-          + "<td>" + i.idCategoria.nombreCategoria + "</td>" + "</tr>");
-      }); */
     }
 
     function error(response) {
       alert("Error");
     }
+
+    $.ajax({
+      url: "",
+      method: "",
+      data: {},
+      success: null,
+      error: null
+    });
   </script>
 </body>
 

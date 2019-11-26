@@ -44,12 +44,13 @@ public class ProductoController {
 		return "/Productos/ProductosList";
 	}
 	@PostMapping(value = "guardar")
-	public String save(@RequestParam String nombreProducto, @RequestParam Long categoria, @RequestParam float precio) {
+	public String save(@RequestParam String nombreProducto, @RequestParam Long categoria, @RequestParam float precio, @RequestParam String imagen) {
 		@Valid Productos producto = new Productos();
 		producto.setNombreProducto(nombreProducto);
 		Categorias cat = icategorias.findById(categoria).get();
 		producto.setIdCategoria(cat);
 		producto.setPrecio(precio);
+		producto.setImagen("/Fotos/"+imagen);
 		iproductos.save(producto);
 		return "redirect:/producto/listar";
 	}

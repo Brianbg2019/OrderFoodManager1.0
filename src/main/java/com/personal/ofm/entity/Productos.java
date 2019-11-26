@@ -5,7 +5,9 @@
  */
 package com.personal.ofm.entity;
 
+import java.io.FileInputStream;
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -54,6 +56,10 @@ public class Productos implements Serializable {
     @NotNull
     @Column(name = "precio", nullable = false)
     private float precio;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "imagen", nullable = false)
+    private String imagen;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
     private List<Detalles> detallesList;
     @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria", nullable = false)
@@ -67,10 +73,11 @@ public class Productos implements Serializable {
         this.idProducto = idProducto;
     }
 
-    public Productos(Long idProducto, String nombreProducto, float precio) {
+    public Productos(Long idProducto, String nombreProducto, float precio ,String imagen) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.precio = precio;
+        this.imagen = imagen;
     }
 
     public Long getIdProducto() {
@@ -96,8 +103,9 @@ public class Productos implements Serializable {
     public void setPrecio(float precio) {
         this.precio = precio;
     }
+   
 
-    @XmlTransient
+	@XmlTransient
     public List<Detalles> getDetallesList() {
         return detallesList;
     }
@@ -114,7 +122,15 @@ public class Productos implements Serializable {
         this.idCategoria = idCategoria;
     }
 
-    @Override
+    public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (idProducto != null ? idProducto.hashCode() : 0);

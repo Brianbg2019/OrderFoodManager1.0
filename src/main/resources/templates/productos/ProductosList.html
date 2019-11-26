@@ -25,6 +25,7 @@
                     <thead class="bg-info">
                         <tr class="text-light text-center">
                             <th>ID</th>
+                            <th>Precentación</th> 
                             <th>Nombre</th>
                             <th>CategorÃ­a</th>
                             <th>Precio</th>
@@ -34,6 +35,7 @@
                     <tbody class="text-dark">
                         <tr th:each="i : ${items}">
                             <td th:text="${i.idProducto}"></td>
+                            <td><img th:src="${i.imagen}" width="100px" height="100px"/></td> 
                             <td th:text="${i.nombreProducto}"></td>
                             <td th:text="${i.idCategoria.nombreCategoria}"></td>
                             <td th:text="${i.precio}"></td>
@@ -75,6 +77,10 @@
                                     <option th:each="c:${categoria}" th:value="${c.idCategoria}"
                                         th:text="${c.nombreCategoria}"></option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Foto: </label>
+                                <input type="file" name="imagen" class="form-control" required>
                             </div>
                         </div>
                         <div class="modal-footer">

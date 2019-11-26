@@ -58,10 +58,10 @@
 					<td>01</td>
 					<td>Rafael Chavez</td>
 					<td>01</td>
-					<td>$0.0</td>
+					<td>$3.0</td>
 					<td>
-						<div class="formulario">
-							<select class="estado">
+						<div class="formulario" >
+							<select id="estado" onchange="cambiarColor(this.value)">
 								<option value="01" class="uno">Pendiente</option>
 								<option value="02" class="dos">En Proceso</option>
 								<option value="03" class="tres">Finalizado</option>
@@ -69,30 +69,13 @@
 							<h1 id="contenedor"></h1>
 						</div> 
 					</td>
-					<tr>
-							<td></td>
-							<td>01</td>
-							<td>Rafael Chavez</td>
-							<td>01</td>
-							<td>$0.0</td>
-							<td>
-								<div class="formulario">
-									<select class="estado">
-										<option value="01" class="uno">Pendiente</option>
-										<option value="02">En Proceso</option>
-										<option value="03">Finalizado</option>
-									</select> <input type="submit" class="btn btn-info" id="enviar">
-									<h1 id="contenedor"></h1>
-								</div> 
-							</td>
-						</tr>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 	<script>
 		//Función creada solo con JavaScript nativo
-		 /* //onchange="cambiarColor(this.value)"
+		
 		 function cambiarColor(valor){
 			if (valor == 01) {
 				document.getElementById("estado").style.backgroundColor="red";
@@ -101,8 +84,8 @@
 			}else if(valor == 03){
 				document.getElementById("estado").style.backgroundColor="green";
 			}
-		}  */ 
-		 $(document).ready(inicio);
+		}  
+		 /* $(document).ready(inicio);
 		function inicio(){
 			$("select").change(function(){
 				if($(".estado") == $(".uno")){
@@ -113,7 +96,7 @@
 					$(this).css("background-color","green");
 				}
 			});
-		} 
+		} */ 
 
 		 
     </script>

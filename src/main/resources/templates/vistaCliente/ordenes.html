@@ -33,32 +33,23 @@
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Total</th>
-                <th>Editar</th>
-                <th>Borrar</th>
+                <th>Acciones</th>
               </tr>
             </thead>
-
-            <tbody>
-              <tr th:each="i : ${items}">
-                <td th:text="${i.idOrden.idOrden}"></td>
-                <td th:text="${i.idProducto.nombreProducto}"></td>
-                <td th:text="${i.cantidad}"></td>
-                <td th:text="${i.idProducto.precio}"></td>
-                <td></td>
-                <td> <a name="modificar" id="modificar" class="btn btn-outline-warning" role="button">Editar</a></td>
-                <!-- th:href="@{'/producto/modificar/' + ${i.idProducto}}" -->
-                <td><a class="btn btn-outline-danger delete">Eliminar</a></td>
-                <!-- th:href="@{'/producto/eliminar/' + ${i.idProducto}}" -->
-              </tr>
-            </tbody>
-          </table>
-          <table class="table">
-            <thead>
               <tr>
-                <th>Total</th>
-                <td>Total a pagar</td>
+                <td>01</td>
+                <td>Pollo a la plancha</td>
+                <td>1</td>
+                <td>$3.00</td>
+                <td>$3.00</td>
+                <td>
+                  <a name="modificar" id="modificar" class="btn btn-warning"
+                       role="button">Editar</a>
+
+                  <a class="btn btn-danger delete"
+                      >Eliminar</a>
+              </td>
               </tr>
-            </thead>
           </table>
         </div>
         <td><button class="btn btn-primary" href="#" data-dismiss="modal">
