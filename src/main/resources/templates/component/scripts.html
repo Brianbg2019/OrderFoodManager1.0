@@ -37,7 +37,15 @@
         </script>-->
         <!--#2-->
         <script>
+            /* window.addEventListener("load", function () {
+                const loader = document.querySelector(".loader");
+                loader.className += "hidden"; // esta es la clase agregada en el css
+            }); */
+
+
+            $('.loader h5').hide();
             $(document).ready(function () {
+
                 $('#miTabla').DataTable({
                     "language": {
                         "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
@@ -50,10 +58,10 @@
                 $('#rol').click(mostrar);
             });
 
-            function muestrame(){
+            function muestrame() {
                 $('#muestra').slideToggle(600);
             }
-            function mostrar(){
+            function mostrar() {
                 $('#muestr').slideToggle(600);
             }
         </script>

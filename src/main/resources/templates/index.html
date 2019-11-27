@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:include="component/assetLogin::assets"></head>
+
 <body>
 	<div class="limiter">
 		<div class="container-login100"
-			style="background-image: url('/images/fondo.jpg'); background-repeat: no-repeat;">
+			style="background-image: url('/images/fondo.jpg'); background-repeat: no-repeat;
+			
+			">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="POST" th:action="@{/login}">
 					<span class="login100-form-logo">
@@ -16,7 +20,8 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate="Type user name">
-						<input class="input100" id="username" type="email" name="username" placeholder="Email" autocomplete="off">
+						<input class="input100" id="username" type="email" name="username" placeholder="Email"
+							autocomplete="off">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
@@ -34,7 +39,11 @@
 			</div>
 		</div>
 	</div>
+
 	<div th:include="component/scriptLogin::scripts"></div>
+
+
+
 </body>
 
 </html>

@@ -65,11 +65,12 @@ public class ProductoController {
 	}
 	
 	@PostMapping(value = "modificar")
-	public String editar(@RequestParam Long idProducto, @RequestParam String nombreProducto, @RequestParam Long categoria, @RequestParam float precio) {
+	public String editar(@RequestParam Long idProducto, @RequestParam String nombreProducto, @RequestParam Long categoria, @RequestParam float precio,@RequestParam String imagen) {
 		Productos pro = new Productos();
 		pro.setIdProducto(idProducto);
 		pro.setNombreProducto(nombreProducto);
 		Categorias cat = icategorias.findById(categoria).get();
+		pro.setImagen("/Fotos/"+imagen);
 		pro.setIdCategoria(cat);
 		pro.setPrecio(precio);
 		iproductos.save(pro);
