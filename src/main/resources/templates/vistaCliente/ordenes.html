@@ -10,60 +10,86 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
     type="text/css">
   <link th:href="@{/css/freelancer.css}" rel="stylesheet">
-</head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
 
-<body>
+<body style="background-color: #E5E2EE;">
+  <header>
 
-  <!--  <div  style="background-color: #dadada;">-->
-  <form action="">
-    <div class="titu"><img src="/imgs/logo.png" alt="logo" height="60px" title="Order Food Manager">
+    <div class="titu" style="height: 100px;"><img src="/imgs/logo.png" alt="logo" height="60px"
+        title="Order Food Manager">
       Order Food Manager
-      <!--  <img id="carro" src="/imgs/iconos/icon.png" width="70px" height="70px" data-target="#portfolioModal12"
-          data-toggle="modal"> -->
+      <a href="/detalle/vista"><img src="/images/back .png" class="float-right mr-5 mt-3" width="50" height="50"></a>
     </div>
-    <div class="page-top">
-      </header>
-      <div class="modal-body text-center">
-        <div class="container" style="text-align: center;">
-          <table class="table table-hover" id="miTabla">
-            <thead>
-              <tr class="thead-dark">
-                <th>Orden N°</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Total</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-              <tr>
-                <td>01</td>
-                <td>Pollo a la plancha</td>
-                <td>1</td>
-                <td>$3.00</td>
-                <td>$3.00</td>
-                <td>
-                  <a name="modificar" id="modificar" class="btn btn-warning"
-                       role="button">Editar</a>
+  </header>
+  <div class="Container">
 
-                  <a class="btn btn-danger delete"
-                      >Eliminar</a>
-              </td>
-              </tr>
-          </table>
-        </div>
-        <td><button class="btn btn-primary" href="#" data-dismiss="modal">
-            <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i> Ordenar
-          </button></td>
-        <a name="regresar" id="regresar" class="btn btn-primary" href="/detalle/vista" role="button">
-          <i><img src="https://img.icons8.com/metro/26/000000/shopping-basket.png"></i>Regresar</a>
+    <div class="container mt-3">
+      <div class="form-group">
+        <label for="nombre" class="text-info">
+          <h2>Nombre:</h2>
+        </label><br>
+        <input type="text" placeholder="Digite su nombre..." required class="form-control col-4">
+        <small class="text-muted">*Propietario de la orden/cliente*</small>
       </div>
     </div>
-  </form>
-  </div>
+
+    <div class="container mt-2 mb-5">
+      <table class="table table-hover border border-info" id="miTabla">
+        <thead class="bg-info">
+          <tr>
+            <th>Orden N°</th>
+            <th>Orden</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td>Carne asada</td>
+            <td>1</td>
+            <td>3.50</td>
+            <td>
+              <a class="btn btn-outline-warning" role="button"><i class="fas fa-edit"></i> Editar</a>
+              <a class="btn btn-outline-danger" role="button"><i class="fas fa-trash-alt"></i> Eliminar</a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <button class="btn btn-info btn-lg"><img src="/images/ordenar.png" width="30" height="30"> Ordenar</button>
+      </div>
+    </div>
+    <div class="text-right container">
+      <label for="nombre" class="text-info">
+        <h2>Total:</h2>
+      </label>
+      <div id="total" style="width: 50px; height: 50px;" class="bg-light float-right ml-1">
+        <h4 class="float-left text-muted mt-2">$</h4>
+      </div><br>
+      <span class="text-muted">*Total de la orden*</span><br>
+      
+
+    </div>
 
   </div>
-  </div>
+  <!-- Copyright Section -->
+
+  <section class="copyright py-4 mt-3 text-center text-white" style="position: absolute; bottom: 0; width: 100%;">
+    <div class="container">
+      <small>Copyright &copy; OrderFoodManager_CDS 2019</small>
+    </div>
+  </section>
+
+
 </body>
-          
+
 </html>

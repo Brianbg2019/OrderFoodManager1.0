@@ -22,13 +22,16 @@
   <link th:href="@{/css/freelancer.css}" rel="stylesheet">
 </head>
 
-<body >
+<body>
   <!--ENCABEZADO DE LA PAGINA hacer referencia a la lista con el hfre  de la vista de la orden-->
   <header>
     <div>
       <div class="titu"><img src="/imgs/logo.png" alt="logo" height="60px" title="Order Food Manager">
         Order Food Manager
-        <a href="/detalle/mostrar"><img id="carro" src="/imgs/iconos/icon.png" width="70px" height="70px"></a>
+        <!-- <a href="/detalle/mostrar"><img id="carro" src="/imgs/iconos/icon.png" width="70px" height="70px"
+            data-target="#portfolioModal12" data-toggle="modal"></a> -->
+
+        <a href="/detalle/mostrar"><i class="text-light fas fa-shopping-basket fa-lg mt-3 mr-4 float-right"></i></a>
       </div>
     </div>
   </header>
@@ -166,17 +169,13 @@
   </section>
 
   <!-- Copyright Section -->
-  <section class="copyright py-4 text-center text-white">
+  <section class="copyright py-4 mt-3 text-center text-white">
     <div class="container">
       <small>Copyright &copy; OrderFoodManager_CDS 2019</small>
     </div>
   </section>
 
-  <div class="scroll-to-top d-lg-none position-fixed ">
-    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
-      <i class="fa fa-chevron-up"></i>
-    </a>
-  </div>
+
 
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -189,7 +188,7 @@
     aria-labelledby="portfolioModal1Label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button style="margin-left: 465px;" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">
             <i class="fas fa-times"></i>
           </span>
@@ -214,7 +213,7 @@
                     <thead>
                       <tr>
                         <th>Precentación</th>
-                        <th>Platillo</th>
+                        <th>Producto</th>
                         <th>Cantidad</th>
                         <th>Precio</th>
                         <th>Ordenar</th>
@@ -269,7 +268,8 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th>Platillo</th>
+                        <th>Precentación</th>
+                        <th>Producto</th>
                         <th>Cantidad</th>
                         <th>Precio</th>
                         <th>Ordenar</th>
@@ -325,7 +325,8 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th>Platillo</th>
+                        <th>Precentación</th>
+                        <th>Producto</th>
                         <th>Cantidad</th>
                         <th>Precio</th>
                         <th>Ordenar</th>
@@ -381,7 +382,8 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th>Platillo</th>
+                        <th>Precentación</th>
+                        <th>Producto</th>
                         <th>Cantidad</th>
                         <th>Precio</th>
                         <th>Ordenar</th>
@@ -437,7 +439,8 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th>Platillo</th>
+                        <th>Precentación</th>
+                        <th>Producto</th>
                         <th>Cantidad</th>
                         <th>Precio</th>
                         <th>Ordenar</th>
@@ -493,7 +496,8 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th>Platillo</th>
+                        <th>Precentación</th>
+                        <th>Producto</th>
                         <th>Cantidad</th>
                         <th>Precio</th>
                         <th>Ordenar</th>
@@ -546,10 +550,10 @@
       pet.html("");
       response.forEach(i => {
         pet.append("<tr>" + "<td><img src=" + i.imagen + "/ width='80px' height='80px'></td>"
-          +"<td>" + i.nombreProducto + "</td>"
+          + "<td>" + i.nombreProducto + "</td>"
           + "<td>" + "<input id='cantidad' value='1' type='number' style='border: 0; background-color: white;' " + "</td>"
-          + "<td>"+"<p>$" + i.precio + "</p>"+"</td>"
-          + "<td>" + "<button class='btn btn-primary' href='#'><i><img><i class='fas fa-shopping-basket'></i> Ordenar</i></button>" + "</tr>");
+          + "<td>" + "<p>$" + i.precio + "</p>" + "</td>"
+          + "<td>" + "<button class='btn btn-primary' href='#' id='ordenar'><i><img><i class='fas fa-shopping-basket'></i> Ordenar</i></button>" + "</tr>");
 
       });
     }

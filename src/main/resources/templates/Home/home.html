@@ -7,21 +7,33 @@
 
 <body>
 	<div th:fragment="contenido">
+
 		<div style="
 			background-image: url('/img/fondoDashBoard.jpg');
+			width: 100%;
+			margin-top: -25px;
+			min-height: 100vh;
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			padding: 15px;
 			background-repeat: no-repeat;
-			background-size: 110%;
-			margin-top: -24px;
+			background-position: center;
+			background-size: cover;
+			position: relative;
 			">
 			<br>
 			<div class="container">
 				<h1 class="bienvenidos display-4 text-center">BIENVENID@S A ORDER FOOD MANAGER</h1>
 				<img class="logo" style="margin-left: 125px;" src="/images/logo2.png" width="850px" height="680px">
 			</div>
-
 		</div>
 	</div>
-
 </body>
 
 </html>
