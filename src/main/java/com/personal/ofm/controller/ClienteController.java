@@ -1,70 +1,77 @@
 package com.personal.ofm.controller;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.personal.ofm.entity.Clientes;
 import com.personal.ofm.repository.IClientes;
+import com.personal.ofm.service.ClientesService;
 
 @Controller
 @RequestMapping("cliente")
 public class ClienteController {
 	
 	@Autowired
-	IClientes icliente;
+	ClientesService daoCliente;
 	
-	@GetMapping(value = "listar")
-	public String listar(Model m) {
-		List<Clientes> cliente = (List<Clientes>) icliente.findAll();
-		m.addAttribute("items", cliente);
+	@GetMapping(value = "index")
+	public String listar() {
 		return "Clientes/ClientesList";
 	}
 	
-	@GetMapping(value = "guardar")
-	public String nuevo() {
-		return "Clientes/ClientesList";
+	@GetMapping(value = "listar", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@CrossOrigin
+	public Object listClientes() {
+		List<HashMap<String, Object>> registros = new ArrayList<>();
+		List<Clientes> clientList = daoCliente.listClientes();
+		
+		for(Clientes cliente : clientList) {
+			HashMap<String, Object> hm = new HashMap<>();
+			hm.put("idCliente", cliente.getIdCliente());
+			hm.put("nombre", cliente.getNombre());
+			hm.put("Editar", "<button type='button' class='btn btn-warning'>Editar</button>");
+			hm.put("Eliminar", "<button type='button' class='btn btn-danger'>Eliminar</button>");
+			registros.add(hm);
+		}
+		return Collections.singletonMap("data", registros);
 	}
 	
-	@PostMapping(value = "guardar")
-	public String guardar(@RequestParam String nombre,  RedirectAttributes redirectAttrs) {
-		@Valid Clientes cliente = new Clientes();
-		cliente.setNombre(nombre);
-		icliente.save(cliente);
-		redirectAttrs
-        .addFlashAttribute("mensaje", "Agregado correctamente")
-        .addFlashAttribute("clase", "success");
-		return "redirect:/cliente/listar";
-	}
-	
-	@GetMapping(value = "modificar/{idCliente}")
-	public String modificar(Model m, @PathVariable Long idCliente){
-		Clientes cliente = icliente.findById(idCliente).get();
-		m.addAttribute("items", cliente);
-		return "Clientes/ClientesEdit";
-	}
-	
-	@PostMapping(value = "modificar")
-	public String editar(@RequestParam Long idCliente, @RequestParam String nombre){
+	/*Usar al guardar una orden*/
+	@GetMapping(value = "save")
+	@ResponseBody
+	@CrossOrigin
+	public HashMap<String, String> guardar(@RequestParam String nombre){
 		Clientes cliente = new Clientes();
-		cliente.setIdCliente(idCliente);
+		HashMap<String, String> hm = new HashMap<String, String>();
+		
 		cliente.setNombre(nombre);
-		icliente.save(cliente);
-		return "redirect:/cliente/listar";
+		try {
+			daoCliente.saveOrUpdate(cliente);
+			hm.put("Mensaje", "Se agrego correctamente");
+		} catch (Exception e) {
+			hm.put("Mensaje", "Error al guardar");
+		}
+		return hm;
 	}
 	
-
-	
-	@GetMapping(value = "eliminar/{idCliente}")
-	public String eliminar(@PathVariable Long idCliente){
-		Clientes cliente = icliente.findById(idCliente).get();
-		icliente.delete(cliente);
-		return "redirect:/cliente/listar";
+	@PostMapping(value = "delete")
+	@ResponseBody
+	@CrossOrigin
+	public HashMap<String, String> eliminar(){
+		return null;
 	}
 }

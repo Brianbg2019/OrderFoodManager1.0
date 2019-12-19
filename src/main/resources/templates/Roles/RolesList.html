@@ -11,25 +11,37 @@
         <div class="col-10 offset-1 mt-3">
 
             <!--Formulario para agregar nuevo rol-->
-			<div id="muestr" class="container mt-3">
+            <div id="muestr" class="container mt-3">
+                <form th:action="@{/roles/guardar}" method="post">
+                    <div class="form-group row justify-content-end">
+                        <input type="text" id="roles" class="form-control col-4" name="rol" placeholder="Ingrese nuevo rol"
+                            required autocomplete="off">
+                        <button type="button" id="guardarRol" class="btn btn-outline-success ml-2">Guardar</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Colapse para editar -->
+            <div id="muestr2" class="container mt-3">
                     <form th:action="@{/roles/guardar}" method="post">
                         <div class="form-group row justify-content-end">
-                            <input type="text" class="form-control col-4" name="rol" placeholder="Ingrese nuevo rol" required
-                                autocomplete="off">
-                            <input type="submit" class="btn btn-outline-success ml-2" value="Agregar">
+                                <input type="hidden" id="id" class="form-control col-4" name="id">
+                            <input type="text" id="roles2" class="form-control col-4" name="rol" placeholder="Editar"
+                                required autocomplete="off">
+                            <button type="button" id="EditarRol" class="btn btn-outline-warning ml-2">Editar</button>
                         </div>
                     </form>
                 </div>
 
 
-            <button id="rol" type="button" class="btn btn-outline-info btn-lg"><i class="fas fa-user-cog"></i> NUEVO ROL</button>
+            <button id="rol" type="button" class="btn btn-outline-info btn-lg"><i class="fas fa-user-cog"></i> NUEVO
+                ROL</button>
         </div>
         <div class="row justify-content-center align-items-center col-10 offset-1">
             <h1 class="display-4">LISTADO DE ROLES</h1>
         </div>
 
         <div class="container">
-            <table class="table table-bordered" id="miTabla">
+            <table class="table table-bordered" id="Rdatos">
                 <thead class="bg-info">
                     <tr class="text-light">
                         <th>ID</th>
@@ -38,7 +50,7 @@
                         <th>Eliminar</th>
                     </tr>
                 </thead>
-                <tbody class="text-dark">
+                <!-- <tbody class="text-dark">
                     <tr th:each="i : ${items}">
                         <td th:text="${i.idRol}"></td>
                         <td th:text="${i.rol}"></td>
@@ -47,12 +59,12 @@
                         <td><a class="btn btn-danger"
                                 th:href="@{'/roles/eliminar/' + ${i.idRol}}">Eliminar</a></td>
                     </tr>
-                </tbody>
+                </tbody> -->
             </table>
         </div>
 
-         <!--MODAL ELIMINAR-->
-       <div id="eliminar" class="modal fade" tabindex="-1" role="dialog">
+        <!--MODAL ELIMINAR-->
+        <div id="Modaleliminar" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
@@ -61,16 +73,20 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
+                            <input type="hidden" id="idRoles" class="form-group">
                             <p>¿Esta seguro de eliminar este rol?</p>
                         </div>
                         <div class="modal-footer">
-                            <input type="button" class="btn btn-light" data-dismiss="modal" value="Cancelar">
-                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                            <button type="button" id="btnEliminarRol" class="btn btn-danger">Eliminar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+        <script src="/js/Ajax/Roles/Rol.js"></script>
     </div>
 </body>
 

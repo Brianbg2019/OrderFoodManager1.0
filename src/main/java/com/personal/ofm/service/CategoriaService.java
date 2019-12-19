@@ -57,5 +57,8 @@ public class CategoriaService {
 		return response;
 	}
 	
-	
+	@Transactional
+	public Categorias getIdCategoria(Long id) {
+		return icategoria.findById(id).get();
+	}
 }
