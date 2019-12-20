@@ -36,13 +36,11 @@ public class DetalleController {
 	@PostMapping(value = "detallesOrden", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@CrossOrigin
-	public Object saveDetalles(@RequestParam long idProducto, @RequestParam String nombre, @RequestParam float precio, @RequestParam int cantidad) {
+	public Object saveDetalles(@RequestParam long idProducto, @RequestParam int cantidad) {
 		Detalles detail = new Detalles();
 		HashMap<String, String> hm = new HashMap<>();
 		
-		detail.getIdProducto().setIdProducto(idProducto);
-		detail.getIdProducto().setNombreProducto(nombre);
-		detail.getIdProducto().setPrecio(precio);
+		detail.setIdProducto(iproductos.findById(idProducto).get());
 		detail.setCantidad(cantidad);
 		
 		try {
@@ -52,6 +50,14 @@ public class DetalleController {
 			hm.put("Mensaje", "Error al guardar Detalle");
 		}
 		return hm;
+	}
+	
+	@GetMapping(value = "mostrarDetalles", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@CrossOrigin
+	public Object getDetalles() {
+		
+		return detalles;
 	}
 
 	/*
