@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author bryan.cabrerafgkah
+ * @author brayan.Barrientos
  */
 @Entity
 @Table(name = "detalles", catalog = "bd_comandas", schema = "")

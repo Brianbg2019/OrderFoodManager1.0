@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="ISO-8859-1">
@@ -41,15 +41,14 @@
       <table class="table table-hover border border-info" id="miTabla">
         <thead class="bg-info">
           <tr>
-            <th>Orden N°</th>
-            <th>Orden</th>
-            <th>Cantidad</th>
+            <th>N°</th>
+            <th>Producto</th>
             <th>Precio</th>
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
+        <tbody id="ProductDetails">
+         <!--  <tr>
             <td>01</td>
             <td>Carne asada</td>
             <td>1</td>
@@ -59,7 +58,7 @@
               <a class="btn btn-outline-danger" role="button"><i class="fas fa-trash-alt"></i> Eliminar</a>
             </td>
 
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>
@@ -89,7 +88,38 @@
     </div>
   </section>
 
+  <script>
+    $(document).ready(inicio);
+    function inicio(){
+      cargarOrden();
+    }
 
+    function cargarOrden(){
+      $.ajax({
+        url : "http://localhost:8080/detalle/detalles",
+        method:"Get",
+        data : null,
+        success : function(response){
+          $("#ProductDetails").html("");
+          response.forEach(i => {
+            $("#ProductDetails").append(""
+            +"<tr>"
+              +"<td>" + i.idProducto + "</td>"
+              +"<td>" + i.nombreProducto + "</td>"
+              +"<td>" + i.precio + "</td>"
+              + "<td><button class='btn btn-outline-warning mr-2'><i class='fas fa-edit'></i>Editar</button>" 
+              + "<button class='btn btn-outline-danger'><i class='fas fa-trash-alt'></i>Eliminar</button>"
+              +"</td>"
+            +"</tr>"
+            );
+          });
+        },
+        error : function(response){
+          console.log("Error en la peticion" + response);
+        }
+      });
+    }
+  </script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <!--links para boostrap-->
@@ -212,6 +212,7 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
+                        <th>ID</th>
                         <th>Precentación</th>
                         <th>Producto</th>
                         <th>Cantidad</th>
@@ -535,6 +536,20 @@
   <script th:src="@{/js/main.js}"></script>
 
   <script>
+    let datosOrden = {
+      id: 0,
+      nombre: "",
+      cantidad : 0,
+      precio: 0.00
+    };
+
+    $(document).ready(inicio);
+    function inicio() {
+      $("body").on("click", ".ordenar", function () {
+        cargarDetalles($(this).parent().parent().children('td:eq(0)').text(), $(this).parent().parent().children('td:eq(1)').text(), $(this).parent().parent().children('td:eq(2)').text(),$(this).parent().parent().children('td:eq(3)').text());
+      });
+    }
+
     function obtenerProductosCategoria(categoria, id) {
       $.ajax({
         url: "/producto/productos",
@@ -549,12 +564,43 @@
       var pet = $(id);
       pet.html("");
       response.forEach(i => {
-        pet.append("<tr>" + "<td><img src=" + i.imagen + "/ width='80px' height='80px'></td>"
+        pet.append("<tr>"
+          + "<td>" + i.idProducto + "</td>"
+          + "<td><img src=" + i.imagen + "/ width='80px' height='80px'></td>"
           + "<td>" + i.nombreProducto + "</td>"
           + "<td>" + "<input id='cantidad' value='1' type='number' style='border: 0; background-color: white;' " + "</td>"
-          + "<td>" + "<p>$" + i.precio + "</p>" + "</td>"
-          + "<td>" + "<button class='btn btn-primary' href='#' id='ordenar'><i><img><i class='fas fa-shopping-basket'></i> Ordenar</i></button>" + "</tr>");
+          + "<td>" + i.precio + "</td>"
+          + "<td>" + "<button class='btn btn-primary ordenar'><i><img><i class='fas fa-shopping-basket'></i> Ordenar</i></button>" + "</tr>");
 
+      });
+    }
+
+    function cargarDetalles(id, nombre, cantidad, precio) {
+      datosOrden.id = id;
+      datosOrden.nombre = nombre;
+      datosOrden.precio = precio;
+      datosOrden.cantidad =cantidad;
+
+      $.ajax({
+        url: "http://localhost:8080/detalle/detallesOrden",
+        method: "Post",
+        data: {
+          id: datosOrden.id,
+          nombre: datosOrden.nombre,
+          precio: datosOrden.precio,
+          cantidad : datosOrden.cantidad
+        },
+        success: function (response) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Orden realizada',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          console.log(response.Mensaje);
+        },
+        error: error
       });
     }
 
