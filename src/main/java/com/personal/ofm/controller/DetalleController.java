@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.personal.ofm.entity.Detalles;
-import com.personal.ofm.entity.Ordenes;
 import com.personal.ofm.repository.IClientes;
 import com.personal.ofm.repository.IDetalles;
 import com.personal.ofm.repository.IProductos;
@@ -19,36 +18,40 @@ import com.personal.ofm.repository.IProductos;
 @Controller
 @RequestMapping("detalle")
 public class DetalleController {
-	
+
 	@Autowired
 	IDetalles idetalles;
 	@Autowired
 	IProductos iproductos;
 	@Autowired
 	IClientes iclientes;
-	
+
+	@GetMapping(value = "ver")
+	public String ver(){
+		return "/vistaCliente/index";
+	}
+
 	@GetMapping(value = "vista")
 	public String vista(Model m) {
 		List<Detalles> detalles = (List<Detalles>) idetalles.findAll();
 		m.addAttribute("items", detalles);
-		
-	return "vistaCliente/index";
+		return "/vistaCliente/index";
 	}
+
 	@GetMapping(value = "mostrar")
 	public String Mostrar(Model m) {
 		List<Detalles> detalles = (List<Detalles>) idetalles.findAll();
 		m.addAttribute("items", detalles);
-		
-	return "vistaCliente/ordenes";
-	
-	} 
-	
+
+		return "vistaCliente/ordenes";
+
+	}
+
 	@GetMapping(value = "orden", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String Mostrarorden() {
-		
+
 		return "";
 	}
-	
 
 }
