@@ -24,5 +24,10 @@ public class Test {
 	public String motrar() {
 		return "vistaCliente/index";
 	}
+
+	@GetMapping(value = "menu")
+	public String menu() {
+		return "Enlaces/EnlaceMenu";
+	}
 	
 }

@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered" id="miTabla">
+                <table class="table table-bordered" id="Edatos">
                     <thead class="bg-info">
                         <tr class="text-light">
                             <th>Id</th>
@@ -34,7 +34,7 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody class="text-dark">
+                    <!-- <tbody class="text-dark">
                         <tr th:each="i : ${items}">
                             <td th:text="${i.idUsuario}"></td>
                             <td th:text="${i.nombre}"></td>
@@ -49,7 +49,7 @@
                                     th:href="@{'/usuario/eliminar/' + ${i.idUsuario}}">Eliminar</a>
                             </td>
                         </tr>
-                    </tbody>
+                    </tbody> -->
                 </table>
             </div>
         </div>
@@ -66,34 +66,78 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" name="nombre" autocomplete="off" class="form-control" required>
+                                <input type="text" id="nombre" name="nombre" autocomplete="off" class="form-control"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label>N° DUI</label>
-                                <input type="text" name="dui" autocomplete="off" class="form-control" required>
+                                <input type="text" name="dui" id="dui" autocomplete="off" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>N° Telefono</label>
-                                <input type="text" name="telefono" autocomplete="off" class="form-control" required>
+                                <input type="text" name="telefono" id="telefono" autocomplete="off" class="form-control"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="roles" class="col-sm-2 control-label">Cargo</label>
                                 <select name="roles" id="roles" class="form-control" required>
-                                    <option th:each="r:${rol}" th:value="${r.idRol}" th:text="${r.rol}"></option>
                                 </select>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-light" data-dismiss="modal" value="Cancelar">
-                            <input type="submit" class="btn btn-success" value="Agregar">
+                            <button type="button" id="guardarUsuario" class="btn btn-success">Guardar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
 
+        <!-- MODAL PARA MODIFICAR EMPLEADO -->
+        <div id="modificarEmpleado" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                   
+                        <div class="modal-header bg-secondary">
+                            <h4 class="modal-title text-light">NUEVO EMPLEADO</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="hidden" id="idUsuario" name="idUsuario" class="form-control"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" id="nombre2" name="nombre2" autocomplete="off" class="form-control"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label>N° DUI</label>
+                                <input type="text" name="dui2" id="dui2" autocomplete="off" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>N° Telefono</label>
+                                <input type="text" name="telefono2" id="telefono2" autocomplete="off" class="form-control"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="roles" class="col-sm-2 control-label">Cargo</label>
+                                <select name="roles2" id="roles2" class="form-control" required>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-light" data-dismiss="modal" value="Cancelar">
+                            <button type="button" id="btnModificarUsuario" class="btn btn-success" data-dismiss="modal">Guardar</button>
+                        </div>
+       
+                </div>
+            </div>
+        </div>
+
         <!--MODAL ELIMINAR-->
-        <div id="eliminar" class="modal fade" tabindex="-1" role="dialog">
+        <div id="modalEliminar" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
@@ -102,16 +146,20 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
+                            <input type="hidden" class="form-group" id="idUser">
                             <p>¿Esta seguro de eliminar a este empleado?</p>
                         </div>
                         <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+                            <button type="button" id="EliminarUser" class="btn btn-danger" value="Eliminar" data-dismiss="modal">Eliminar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+        <script src="/js/Ajax/Empleados/Empleado.js"></script>
     </div>
 </body>
 

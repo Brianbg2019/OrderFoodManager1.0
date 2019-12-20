@@ -14,9 +14,9 @@
 			<div id="muestra" class="container mt-3">
 				<form th:action="@{/categoria/verificar}" method="post">
 					<div class="form-group row justify-content-end">
-						<input type="text" class="form-control col-4" name="nombreCategoria" placeholder="Ingrese una categoria" required
-							autocomplete="off">
-						<input type="submit" class="btn btn-outline-success ml-2" value="Agregar">
+						<input type="text" class="form-control col-4" name="nombreCategoria"
+							placeholder="Ingrese una categoria" required autocomplete="off" id="categoria">
+						<button id="guardarCategoria" class="btn btn-success ml-1" type="button">Agregar</button>
 					</div>
 				</form>
 			</div>
@@ -31,7 +31,7 @@
 			<h1 class="display-4">LISTADO DE CATEGORIAS</h1>
 		</div>
 		<div class="container prueba2">
-			<table class="table table-bordered" id="miTabla">
+			<table class="table table-bordered" id="TablaCategoria">
 				<thead class="bg-info">
 					<tr class="text-light">
 						<th>ID</th>
@@ -40,26 +40,49 @@
 						<th>Eliminar</th>
 					</tr>
 				</thead>
-				<tbody class="text-dark">
+				<!-- <tbody class="text-dark">
 					<tr th:each="i : ${items}">
 						<td th:text="${i.idCategoria}"></td>
 						<td th:text="${i.nombreCategoria}"></td>
 						<td>
-							<!--form method="post" action="/editar">
-					      <input type="hidden" name="id_edit" th:value="${i.idCategoria}"-->
 							<a name="modificar" id="modificar" class="btn btn-warning"
 								th:href="@{'/categoria/modificar/' + ${i.idCategoria}}" role="button">Editar</a>
-							<!-- /form-->
+							
 						</td>
 						<td>
 							<a class="btn btn-danger delete"
 								th:href="@{'/categoria/eliminar/' + ${i.idCategoria}}">Eliminar</a>
 						</td>
 					</tr>
-				</tbody>
+				</tbody> -->
 			</table>
 		</div>
-
+		<!-- Modal para editar -->
+		<div id="editar" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form>
+						<div class="modal-header">
+							<h4 class="modal-title">Eliminar Categoria</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<input type="hidden" readonly="readonly" id="idCategoria">
+							</div>
+							<div class="form-group">
+								<label for="nombre">Nombre de la categoria</label>
+								<input type="text" class="form-control" id="categoria2">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+							<input type="submit" class="btn btn-danger" value="Eliminar">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 		<!--MODAL ELIMINAR-->
 		<div id="eliminar" class="modal fade" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
@@ -70,19 +93,21 @@
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						</div>
 						<div class="modal-body">
+							<input type="hidden" id="idCategoria">
 							<p>¿Esta seguro de eliminar esta categoria?</p>
 						</div>
 						<div class="modal-footer">
 							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-							<input type="submit" class="btn btn-danger" value="Eliminar">
+							<input type="submit" id="eliminarCategoria" class="btn btn-danger" value="Eliminar">
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+		<script src="/js/Ajax/Categorias/Categoria.js"></script>
 	</div>
-
-
 	<!-- Notificaciones -->
 	<script type="text/javascript">
 		Push.create("Hola");

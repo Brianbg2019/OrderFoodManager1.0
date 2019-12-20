@@ -21,18 +21,18 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered" id="miTabla">
+                <table class="table table-bordered" id="Pdatos">
                     <thead class="bg-info">
                         <tr class="text-light text-center">
                             <th>ID</th>
-                            <th>Precentación</th> 
+                            <th>Precentación</th>
                             <th>Nombre</th>
                             <th>Categoría</th>
                             <th>Precio</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody class="text-dark">
+                    <!-- <tbody class="text-dark">
                         <tr th:each="i : ${items}">
                             <td th:text="${i.idProducto}"></td>
                             <td><img th:src="${i.imagen}" width="100px" height="100px"/></td> 
@@ -46,7 +46,7 @@
                                     th:href="@{'/producto/eliminar/' + ${i.idProducto}}">Eliminar</a>
                             </td>
                         </tr>
-                    </tbody>
+                    </tbody> -->
                 </table>
             </div>
         </div>
@@ -55,45 +55,85 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form th:action="@{/producto/guardar}" method="post">
-                        <div class="modal-header bg-secondary">
-                            <h4 class="modal-title text-light">NUEVO PRODUCTO</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <div class="modal-header bg-secondary">
+                        <h4 class="modal-title text-light">NUEVO PRODUCTO</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Producto: </label>
+                            <input type="text" name="nombreProducto" class="form-control" id="nombre" required
+                                autocomplete="off">
                         </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>Nombre Producto: </label>
-                                <input type="text" name="nombreProducto" class="form-control"
-                                    required>
-                            </div>
-                            <div class="form-group">
-                                <label>Precio: </label>
-                                <input type="text" name="precio" autocomplete="off" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="categoria">Categoria: </label>
-                                <!--<input type="number" name="categoria" class="form-control" required>-->
-                                <select name="categoria" id="categoria" class="form-control" required>
-                                    <option th:each="c:${categoria}" th:value="${c.idCategoria}"
-                                        th:text="${c.nombreCategoria}"></option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Precentación: </label>
-                                <input type="file" name="imagen" class="form-control" required>
-                            </div>
+                        <div class="form-group">
+                            <label>Precio: </label>
+                            <input type="text" name="precio" autocomplete="off" class="form-control" id="precio"
+                                required>
                         </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-light" data-dismiss="modal" value="Cancelar">
-                            <input type="submit" class="btn btn-success" value="Agregar">
+                        <div class="form-group">
+                            <label for="categoria">Categoria: </label>
+                            <!--<input type="number" name="categoria" class="form-control" required>-->
+                            <select name="categoria" class="form-control" id="categoria" required>
+                            </select>
                         </div>
-                    </form>
+                        <div class="form-group">
+                            <label>Precentación: </label>
+                            <input type="file" name="imagen" class="form-control" id="imagen" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" id="guardarProducto">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL PARA EDITAR EL PRODUCTO  -->
+        <div id="modificarProducto" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-secondary">
+                        <h4 class="modal-title text-light">Modificar PRODUCTO</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="number" name="id" class="form-control" id="idProducto" required
+                                autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre Producto: </label>
+                            <input type="text" name="nombreProducto" class="form-control" id="nombre2" required
+                                autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label>Precio: </label>
+                            <input type="text" name="precio" autocomplete="off" class="form-control" id="precio2"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="categoria">Categoria: </label>
+                            <!--<input type="number" name="categoria" class="form-control" required>-->
+                            <select name="categoria" class="form-control" id="categoria2" required>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Precentación: </label>
+                            <input type="file" name="imagen" class="form-control" id="imagen2" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" id="btnmodificarProducto"
+                            data-dismiss="modal">Guardar</button>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!--ELIMINAR PRODUCTO-->
-        <div id="deleteEmployeeModal" class="modal fade" tabindex="-1" role="dialog">
+        <div id="deleteProductoModal" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
@@ -102,16 +142,20 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
+                            <input type="hidden" id="idProduct" class="form-group">
                             <p>¿Esta seguro de eliminar este producto?</p>
                         </div>
                         <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                            <button type="button" class="btn btn-success" data-dismiss="modal" value="Cancelar">Cancelar</button>
+                            <button type="button" id="eliminarProducto" class="btn btn-danger" data-dismiss="modal" value="Eliminar">Eliminar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+        <script src="/js/Ajax/Productos/Producto.js"></script>
     </div>
 </body>
 

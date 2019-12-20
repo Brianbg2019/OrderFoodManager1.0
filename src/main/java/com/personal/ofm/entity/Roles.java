@@ -69,14 +69,15 @@ public class Roles implements Serializable {
         this.rol = rol;
     }
 
-    @XmlTransient
-    public List<Usuarios> getUsuariosList() {
-        return usuariosList;
-    }
+	/*
+	 * @XmlTransient public List<Usuarios> getUsuariosList() { return usuariosList;
+	 * }
+	 */
 
-    public void setUsuariosList(List<Usuarios> usuariosList) {
-        this.usuariosList = usuariosList;
-    }
+	/*
+	 * public void setUsuariosList(List<Usuarios> usuariosList) { this.usuariosList
+	 * = usuariosList; }
+	 */
 
     @Override
     public int hashCode() {

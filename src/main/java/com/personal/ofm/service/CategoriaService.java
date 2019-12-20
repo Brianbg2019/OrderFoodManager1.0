@@ -36,6 +36,17 @@ public class CategoriaService {
 	}
 	
 	@Transactional
+	public Boolean SaveOrUpdate(Categorias categoria) {
+		try {
+			icategoria.save(categoria);
+			return true;
+		} catch (Exception e) {
+			return false;
+			// TODO: handle exception
+		}
+	}
+	
+	@Transactional
 	public boolean deleteCategoria(Long id){
 		boolean response = true;
 		try {
@@ -46,5 +57,8 @@ public class CategoriaService {
 		return response;
 	}
 	
-	
+	@Transactional
+	public Categorias getIdCategoria(Long id) {
+		return icategoria.findById(id).get();
+	}
 }
