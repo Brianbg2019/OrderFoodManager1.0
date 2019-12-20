@@ -42,7 +42,7 @@ public class CategoriaService {
 			return true;
 		} catch (Exception e) {
 			return false;
-			// TODO: handle exception
+			
 		}
 	}
 	

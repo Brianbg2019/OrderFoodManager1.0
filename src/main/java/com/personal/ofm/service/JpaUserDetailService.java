@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import com.personal.ofm.entity.Users;
 import com.personal.ofm.repository.IUser;
 
-//TODO: Auto-generated Javadoc
+
 /**
 * The Class JpaUserDetailService.
 */

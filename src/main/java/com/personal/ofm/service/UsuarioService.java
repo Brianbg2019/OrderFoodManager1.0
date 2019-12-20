@@ -32,7 +32,7 @@ public class UsuarioService {
 			return true;
 		} catch (Exception e) {
 			return false;
-			// TODO: handle exception
+			
 		}
 	}
 
@@ -43,7 +43,7 @@ public class UsuarioService {
 			return true;
 		} catch (Exception e) {
 			return false;
-			// TODO: handle exception
+			
 		}
 	}
 	
