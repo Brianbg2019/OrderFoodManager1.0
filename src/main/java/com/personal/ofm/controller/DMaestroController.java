@@ -18,13 +18,12 @@ import com.personal.ofm.service.VentasService;
 @Controller
 @RequestMapping("detalleventa")
 public class DMaestroController {
-	
+
 	@Autowired
 	VentasService vService;
-	
-	//@PostMapping(value = "cargarCliente")
-	//public String vistaDatos(@RequestParam ) {
-		
-	//	return "DMVentas";
-	//}
+
+	@GetMapping(value = "cargarCliente")
+	public String vistaDatos() {
+		return "DMVentas";
+	}
 }

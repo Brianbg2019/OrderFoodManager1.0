@@ -19,8 +19,8 @@
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
                     <a class="nav-link" href="/home/vista">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Inicio</span></a>
+                        <i class="text-light fas fa-home"></i>
+                        <span>HOME</span></a>
                 </li>
 
                 <!-- Divider -->
@@ -85,20 +85,20 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/orden/listar">
-					<i class="fas fa-hand-holding-usd"></i>
+                        <i class="fas fa-hand-holding-usd"></i>
                         <span>Pedidos</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/detalle/vista">
-                     <img src="/images/menu.png" width="20" height="20">
+                    <a class="nav-link" href="/detalle/ver">
+                        <i class="fas fa-utensils"></i>
                         <span>Menu</span></a>
                 </li>
                 <hr class="sidebar-divider d-none d-md-block">
-                    <!-- Administras fin -->
-                    <div class="text-center d-md-inline">
-                        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                    </div>
-               
+                <!-- Administras fin -->
+                <div class="text-center d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+
 
             </ul>
             <!-- End of Sidebar -->
@@ -118,19 +118,7 @@
                             <i class="fa fa-bars"></i>
                         </button>
 
-                        <!-- Buscador -->
-                        <!-- form
-                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group">
-                                <input type="search" class="form-control bg-light border-0 small" placeholder="Buscar..."
-                                    aria-label="Search" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form-->
+                        <!--BARRA DE SALIDA Y MODAL-->
                         <ul class="navbar-nav ml-auto">
                             <div class="container">
                                 <!-- Button to Open the Modal -->
@@ -140,26 +128,20 @@
                                     </div>
                                 </button>
 
-                                <!-- The Modal -->
+                                <!-- MODAL-->
                                 <div class="modal" id="myModal">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-
-                                            <!-- Modal Header -->
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Salir..</h4>
                                                 <button type="button" class="close" data-dismiss="modal">×</button>
                                             </div>
-
-                                            <!-- Modal body -->
                                             <div class="modal-body">
                                                 ¿Desea salir?
                                             </div>
-
-                                            <!-- Modal footer -->
                                             <div class="modal-footer">
                                                 <a href="/logout" class="btn btn-danger"> SI </a>
-                                                <a href="/producto/listar" class="btn btn-success"> No </a>
+                                                <a data-dismiss="modal"class="btn btn-success"> No </a>
                                             </div>
                                         </div>
                                     </div>
@@ -167,6 +149,7 @@
                             </div>
                         </ul>
                     </nav>
+                    <!--APARTADO PARA LA ADAPTACION DE LAS TABLAS-->
                     <div th:include="this::contenido">
 
                     </div>

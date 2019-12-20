@@ -2,104 +2,146 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-	crossorigin="anonymous"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
-<title>ControlOrden</title>
-<link rel="icon" href="/img/logo2.png">
-<style>
-#fondo {
-	/*background-image: url('/img/fondo13.jpg');
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<title>ControlOrden</title>
+	<link rel="icon" href="/img/logo2.png">
+
+	<!-- <style>
+		#fondo {
+			/*background-image: url('/img/fondo13.jpg');
             background-repeat: no-repeat;
             background-size: 100%;*/
-	background-color: rgba(185, 185, 185, 0.822);
-}
+			background-color: rgba(185, 185, 185, 0.822);
+		}
 
-.formulario {
-	position: relative;
-	font-family: Arial;
-}
+		.formulario {
+			position: relative;
+			font-family: Arial;
+		}
 
-.formulario select {
-	padding: 10px;
-	border: 5px;
-	border-radius: 5px;
- 	background-color:red;
-}
-
-
-
-</style>
+		.formulario select {
+			padding: 10px;
+			border: 5px;
+			border-radius: 5px;
+			background-color: red;
+		}
+	</style> -->
 </head>
 
-<body id="fondo"
-	style="background-image: url('/img/fondoDashBoard.jpg');">
+<body id="fondo" style="background-color: rgba(33, 61, 87, 0.9);">
 	<div class="container">
-		<h1 class="display-4 mt-3 text-center">Control de Ordenes</h1>
-		<table class="table table-dark mt-5" id="tabla">
-			<thead>
+		<h1 class="display-4 mt-3 text-center text-light">CONTROL DE ESTADO DE LA ORDEN</h1>
+		<hr class="sidebar-divider bg-light">
+		<table class="table table-bordered table-hover mt-5">
+			<thead class="bg-dark text-light text-center">
 				<tr>
-					<th></th>
 					<th>ID</th>
 					<th>CLIENTE</th>
 					<th>ORDEN</th>
 					<th>TOTAL</th>
+					<th>ESTADOS</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="text-center bg-light h5">
 				<tr>
-					<td></td>
 					<td>01</td>
 					<td>Rafael Chavez</td>
 					<td>01</td>
 					<td>$3.0</td>
 					<td>
-						<div class="formulario" >
+						<!-- <div class="formulario">
 							<select id="estado" onchange="cambiarColor(this.value)">
 								<option value="01" class="uno">Pendiente</option>
 								<option value="02" class="dos">En Proceso</option>
 								<option value="03" class="tres">Finalizado</option>
-							</select> <input type="submit" class="btn btn-info" id="enviar">
+							</select> <input type="submit" class="btn btn-outline-info" id="enviar">
 							<h1 id="contenedor"></h1>
-						</div> 
+						</div> -->
+						<buttton class="btn btn-danger" name="" type="buttton" id="pendiente"><i
+								class="fa fa-times-circle fa-lg pedient"></i>
+						</buttton>
+						<buttton class="btn btn-warning" name="" type="buttton" id="cocion"><i
+								class="fa fa-hourglass fa-lg tiempo"></i></buttton>
+						<buttton class="btn btn-success" name="" type="buttton"><i class="fa fa-telegram fa-lg"></i>
+						</buttton>
+					</td>
+				</tr>
+				<tr>
+					<td>01</td>
+					<td>Rafael Chavez</td>
+					<td>01</td>
+					<td>$3.0</td>
+					<td>
+						<!-- <div class="formulario">
+							<select id="estado" onchange="cambiarColor(this.value)">
+								<option value="01" class="uno">Pendiente</option>
+								<option value="02" class="dos">En Proceso</option>
+								<option value="03" class="tres">Finalizado</option>
+							</select> <input type="submit" class="btn btn-outline-info" id="enviar">
+							<h1 id="contenedor"></h1>
+						</div> -->
+						<buttton class="btn btn-danger" name="" type="buttton" id="pendiente"><i
+								class="fa fa-times-circle fa-lg pedient"></i>
+						</buttton>
+						<buttton class="btn btn-warning" name="" type="buttton" id="cocion"><i
+								class="fa fa-hourglass fa-lg tiempo"></i></buttton>
+						<buttton class="btn btn-success" name="" type="buttton"><i class="fa fa-telegram fa-lg"></i>
+						</buttton>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-	<script>
-		//Función creada solo con JavaScript nativo
-		
-		 function cambiarColor(valor){
-			if (valor == 01) {
-				document.getElementById("estado").style.backgroundColor="red";
-			}else if(valor == 02){
-				document.getElementById("estado").style.backgroundColor="yellow";
-			}else if(valor == 03){
-				document.getElementById("estado").style.backgroundColor="green";
-			}
-		}  
-		 /* $(document).ready(inicio);
-		function inicio(){
-			$("select").change(function(){
-				if($(".estado") == $(".uno")){
-					$(this).css("background-color","red");
-				}else if(this == 02){
-					$(this).css("background-color","yellow");
-				}else{
-					$(this).css("background-color","green");
-				}
-			});
-		} */ 
+	<!--SCRIPT PARA EL JQUERY-->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
-		 
-    </script>
+	<script>
+		$(document).ready(function () {
+			$('#cocion').click(function () {
+				animarTiempo();
+				setInterval(animarTiempo, 1000);
+			});
+			$('#pendiente').click(function () {
+				animarPendiente();
+				setInterval(animarPendiente, 2000);
+			});
+		});
+
+		function animarTiempo() {
+			/* $('.tiempo').removeClass('fa-hourglass').addClass('fa-hourglass-start'); */
+
+			setTimeout(function () {
+				$('.tiempo').removeClass('fa-hourglass').addClass('fa-hourglass-half');
+			}, 500);
+
+			setTimeout(function () {
+				$('.tiempo').removeClass('fa-hourglass-half').addClass('fa-hourglass-end');
+			}, 1000);
+			setTimeout(function () {
+				$('.tiempo').removeClass('fa-hourglass-end').addClass('fa-hourglass');
+			}, 1500);
+
+		}
+
+		function animarPendiente() {
+			setTimeout(function () {
+				$('.pedient').removeClass('fa-times-circle').addClass('fa-times');
+			}, 1000);
+			setTimeout(function () {
+				$('.pedient').removeClass('fa-times').addClass('fa-times-circle');
+			}, 1500);
+		}
+
+
+
+	</script>
 </body>
 
 </html>

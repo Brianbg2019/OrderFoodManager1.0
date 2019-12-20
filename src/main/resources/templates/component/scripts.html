@@ -5,52 +5,27 @@
     <div th:fragment="scripts">
 
         <script th:src="@{/recursos/jquery/jquery.min.js}"></script>
-        <script th:src="@{/recursos/bootstrap/js/bootstrap.bundle.min.js}"></script>
-        <script th:src="@{/recursos/jquery-easing/jquery.easing.min.js}"></script>
-        <script th:src="@{/js/sb-admin-2.min.js}"></script>
-        <script th:src="@{/recursos/datatables/jquery.dataTables.min.js}"></script>
+        <!-- <script th:src="@{/recursos/bootstrap/js/bootstrap.bundle.min.js}"></script> -->
+        <!-- <script th:src="@{/recursos/jquery-easing/jquery.easing.min.js}"></script> -->
+        <!-- <script th:src="@{/js/sb-admin-2.min.js}"></script> -->
+        <!-- <script th:src="@{/recursos/datatables/jquery.dataTables.min.js}"></script>
         <script th:src="@{/recursos/datatables/dataTables.bootstrap4.min.js}"></script>
-        <script th:src="@{/js/demo/datatables-demo.js}"></script>
+        <script th:src="@{/js/demo/datatables-demo.js}"></script> -->
         <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
         <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}"></script>
         <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
-        <script th:src="@{https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js}"></script>
-        <script th:src="@{https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js}"></script>
+        <script th:src="@{https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js}"></script>
+        <script th:src="@{https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js}"></script>
 
-        <!-- Notificaciones -->
-        <!--SCRIPS PARA DATATABLE-->
-        <!--#1
-            <script>
+        <!--DATATABLE-->
+        <script>
+            $('.loader h5').hide();
             $(document).ready(function () {
                 $('#miTabla').DataTable({
                     "language": {
                         "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-                    },
+                    }, 
                 });
-            });
-        </script>-->
-        <!--<script type="text/javascript">
-            $('table').find('tr').click(function () {
-                console.log('You clicked row ' + ($(this).index() + 1));
-                console.log($('table tr[' + $(this).index() + '] td:eq(0)').text());
-            })	
-        </script>-->
-        <!--#2-->
-        <script>
-            /* window.addEventListener("load", function () {
-                const loader = document.querySelector(".loader");
-                loader.className += "hidden"; // esta es la clase agregada en el css
-            }); */
-
-
-            $('.loader h5').hide();
-            $(document).ready(function () {
-
-                /* $('#miTabla').DataTable({
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-                    },
-                }); */
                 $('.dataTables_length').addClass('bs-select');
                 $('#muestra').hide();
                 $('#muestr').hide();
@@ -58,6 +33,7 @@
                 $('#rol').click(mostrar);
             });
 
+            //funcion para mostrar un div para agregar un registro
             function muestrame() {
                 $('#muestra').slideToggle(600);
             }
