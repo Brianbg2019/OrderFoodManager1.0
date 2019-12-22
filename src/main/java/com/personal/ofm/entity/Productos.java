@@ -60,8 +60,8 @@ public class Productos implements Serializable {
     @NotNull
     @Column(name = "imagen", nullable = false)
     private String imagen;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
-    private List<Detalles> detallesList;
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
+   // private List<Detalles> detallesList;
     @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria", nullable = false)
     @ManyToOne(optional = false)
     private Categorias idCategoria;
@@ -105,14 +105,13 @@ public class Productos implements Serializable {
     }
    
 
-	@XmlTransient
-    public List<Detalles> getDetallesList() {
-        return detallesList;
-    }
-
-    public void setDetallesList(List<Detalles> detallesList) {
-        this.detallesList = detallesList;
-    }
+	/*
+	 * @XmlTransient public List<Detalles> getDetallesList() { return detallesList;
+	 * }
+	 * 
+	 * public void setDetallesList(List<Detalles> detallesList) { this.detallesList
+	 * = detallesList; }
+	 */
 
     public Categorias getIdCategoria() {
         return idCategoria;

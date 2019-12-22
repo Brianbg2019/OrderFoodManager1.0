@@ -567,7 +567,7 @@
           + "<td>" + i.idProducto + "</td>"
           + "<td><img src=" + i.imagen + "/ width='80px' height='80px'></td>"
           + "<td>" + i.nombreProducto + "</td>"
-          + "<td>" + "<input id='inpcantidad' value='1' type='number' style='border: 0; background-color: white;' " + "</td>"
+          + "<td>" + "<input class='inpcantidad' value='1' type='number' style='border: 0; background-color: white;' " + "</td>"
           + "<td>" + i.precio  + "</td>"
           + "<td><button class='btn btn-primary ordenar'>Ordenar</button></td>"
          +"</tr>");
@@ -583,7 +583,7 @@
         method: "Post",
         data: {
           idProducto: datosOrden.id,
-          cantidad : $("#inpcantidad").val()
+          cantidad : $("input.inpcantidad").val()
         },
         success: function (response) {
           Swal.fire({

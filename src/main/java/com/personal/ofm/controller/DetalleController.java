@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.personal.ofm.entity.Detalles;
 import com.personal.ofm.repository.IClientes;
 import com.personal.ofm.repository.IDetalles;
+import com.personal.ofm.repository.IOrdenes;
 import com.personal.ofm.repository.IProductos;
 
 @Controller
@@ -29,7 +30,7 @@ public class DetalleController {
 	@Autowired
 	IProductos iproductos;
 	@Autowired
-	IClientes iclientes;
+	IOrdenes iordenes;
 	
 	public static List<Detalles> detalles = new ArrayList<>();
 	
@@ -42,6 +43,7 @@ public class DetalleController {
 		
 		detail.setIdProducto(iproductos.findById(idProducto).get());
 		detail.setCantidad(cantidad);
+		
 		
 		try {
 			detalles.add(detail);
@@ -56,7 +58,6 @@ public class DetalleController {
 	@ResponseBody
 	@CrossOrigin
 	public Object getDetalles() {
-		
 		return detalles;
 	}
 
