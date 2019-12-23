@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.personal.ofm.entity.Detalles;
 import com.personal.ofm.repository.IClientes;
 import com.personal.ofm.repository.IDetalles;
+import com.personal.ofm.repository.IOrdenes;
 import com.personal.ofm.repository.IProductos;
 
 @Controller
@@ -29,21 +30,20 @@ public class DetalleController {
 	@Autowired
 	IProductos iproductos;
 	@Autowired
-	IClientes iclientes;
+	IOrdenes iordenes;
 	
 	public static List<Detalles> detalles = new ArrayList<>();
 	
 	@PostMapping(value = "detallesOrden", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@CrossOrigin
-	public Object saveDetalles(@RequestParam long idProducto, @RequestParam String nombre, @RequestParam float precio, @RequestParam int cantidad) {
+	public Object saveDetalles(@RequestParam long idProducto, @RequestParam int cantidad) {
 		Detalles detail = new Detalles();
 		HashMap<String, String> hm = new HashMap<>();
 		
-		detail.getIdProducto().setIdProducto(idProducto);
-		detail.getIdProducto().setNombreProducto(nombre);
-		detail.getIdProducto().setPrecio(precio);
+		detail.setIdProducto(iproductos.findById(idProducto).get());
 		detail.setCantidad(cantidad);
+		
 		
 		try {
 			detalles.add(detail);
@@ -52,6 +52,13 @@ public class DetalleController {
 			hm.put("Mensaje", "Error al guardar Detalle");
 		}
 		return hm;
+	}
+	
+	@GetMapping(value = "mostrarDetalles", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@CrossOrigin
+	public Object getDetalles() {
+		return detalles;
 	}
 
 	/*

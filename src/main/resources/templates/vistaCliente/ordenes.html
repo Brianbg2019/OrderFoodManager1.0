@@ -9,11 +9,14 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
     type="text/css">
+  <!-- *********************************** -->
   <link th:href="@{/css/freelancer.css}" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- DataTable pugins -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
   </head>
 
 <body style="background-color: #E5E2EE;">
@@ -38,12 +41,14 @@
     </div>
 
     <div class="container mt-2 mb-5">
-      <table class="table table-hover border border-info" id="miTabla">
+      <table class="table table-hover border border-info" id="TableDetalles">
         <thead class="bg-info">
           <tr>
             <th>N°</th>
             <th>Producto</th>
             <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Total</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -82,21 +87,41 @@
   </div>
   <!-- Copyright Section -->
 
-  <section class="copyright py-4 mt-3 text-center text-white" style="position: absolute; bottom: 0; width: 100%;">
+  <!-- <section class="copyright py-4 mt-3 text-center text-white" style="position: absolute; bottom: 0; width: 100%;">
     <div class="container">
       <small>Copyright &copy; OrderFoodManager_CDS 2019</small>
     </div>
-  </section>
-
+  </section> -->
+  
   <script>
     $(document).ready(inicio);
     function inicio(){
       cargarOrden();
+      datatableDetalles();
+    }
+
+    function datatableDetalles(){
+      $("#TableDetalles").DataTable({
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ ",
+            "zeroRecords": "No hay sintomas que mostrar.",
+            "info": "Mostar páginas _PAGE_ de _PAGES_",
+            "infoEmpty": "",
+            "infoFiltered": "(Filtrados por _MAX_ total registros)",
+            "search": "Buscar:",
+            "paginate": {
+                "first": "Primero",
+                "last": "Anterior",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        }
+      });
     }
 
     function cargarOrden(){
       $.ajax({
-        url : "http://localhost:8080/detalle/detalles",
+        url : "http://localhost:8080/detalle/mostrarDetalles",
         method:"Get",
         data : null,
         success : function(response){
@@ -104,9 +129,11 @@
           response.forEach(i => {
             $("#ProductDetails").append(""
             +"<tr>"
-              +"<td>" + i.idProducto + "</td>"
-              +"<td>" + i.nombreProducto + "</td>"
-              +"<td>" + i.precio + "</td>"
+              +"<td>" + i.idProducto.idProducto + "</td>"
+              +"<td>" + i.idProducto.nombreProducto + "</td>"
+              +"<td>" + i.idProducto.precio + "</td>"
+              +"<td>" + i.cantidad + "</td>"
+              +"<td>" + (i.idProducto.precio * i.cantidad) + "</td>"
               + "<td><button class='btn btn-outline-warning mr-2'><i class='fas fa-edit'></i>Editar</button>" 
               + "<button class='btn btn-outline-danger'><i class='fas fa-trash-alt'></i>Eliminar</button>"
               +"</td>"

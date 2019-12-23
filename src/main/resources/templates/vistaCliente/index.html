@@ -211,14 +211,9 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
-<<<<<<< HEAD
                         <th>ID</th>
-                        <th>Precentación</th>
-                        <th>Producto</th>
-=======
                         <th></th>
                         <th>Platillo</th>
->>>>>>> ae62e5e489cf4be6bfbbbb6550e758f55b662279
                         <th>Cantidad</th>
                         <th>Precio</th>
                         <th>Ordenar</th>
@@ -541,19 +536,16 @@
   <script th:src="@{/js/sb-admin-2.min.js}"></script>
   <!-- Custom scripts for this template -->
   <script th:src="@{/js/main.js}"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script>
     let datosOrden = {
       id: 0,
-      nombre: "",
-      cantidad : 0,
-      precio: 0.00
     };
 
     $(document).ready(inicio);
     function inicio() {
       $("body").on("click", ".ordenar", function () {
-        cargarDetalles($(this).parent().parent().children('td:eq(0)').text(), $(this).parent().parent().children('td:eq(1)').text(), $(this).parent().parent().children('td:eq(2)').text(),$(this).parent().parent().children('td:eq(3)').text());
+        cargarDetalles($(this).parent().parent().children('td:eq(0)').text());
       });
     }
 
@@ -575,26 +567,23 @@
           + "<td>" + i.idProducto + "</td>"
           + "<td><img src=" + i.imagen + "/ width='80px' height='80px'></td>"
           + "<td>" + i.nombreProducto + "</td>"
-          + "<td>" + "<input id='cantidad' value='1' type='number' style='border: 0; background-color: white;' " + "</td>"
-          + "<td>" + "<p>$" + i.precio + "</p>" + "</td>"
-          + "<td>" + "<button class='btn btn-primary' href='#'>Ordenar</button>" + "</tr>");
+          + "<td>" + "<input class='inpcantidad' value='1' type='number' style='border: 0; background-color: white;' " + "</td>"
+          + "<td>" + i.precio  + "</td>"
+          + "<td><button class='btn btn-primary ordenar'>Ordenar</button></td>"
+         +"</tr>");
       });
     }
 
-    function cargarDetalles(id, nombre, cantidad, precio) {
+    function cargarDetalles(id) {
       datosOrden.id = id;
-      datosOrden.nombre = nombre;
-      datosOrden.precio = precio;
-      datosOrden.cantidad =cantidad;
+
 
       $.ajax({
         url: "http://localhost:8080/detalle/detallesOrden",
         method: "Post",
         data: {
-          id: datosOrden.id,
-          nombre: datosOrden.nombre,
-          precio: datosOrden.precio,
-          cantidad : datosOrden.cantidad
+          idProducto: datosOrden.id,
+          cantidad : $("input.inpcantidad").val()
         },
         success: function (response) {
           Swal.fire({
