@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.xml.crypto.dsig.spec.HMACParameterSpec;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,30 +63,22 @@ public class DetalleController {
 	public Object getDetalles() {
 		return detalles;
 	}
+	
+	@GetMapping(value = "remove/{indice}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@CrossOrigin
+	public Object remover(@PathVariable String indice) {
+		HashMap<String, String> hm = new HashMap<>();
+		try {
+			detalles.remove(indice);
+			hm.put("Mensaje", "Se removio correctamente");
+		} catch (Exception e) {
+			hm.put("Mensaje", "Error al remover");
+		}
+		
+		return hm;
+	}
 
-	/*
-	 * public static List<Productos> productosOrden = new ArrayList<>();
-	 * 
-	 * @PostMapping(value = "detallesOrden", produces =
-	 * MediaType.APPLICATION_JSON_VALUE)
-	 * 
-	 * @ResponseBody
-	 * 
-	 * @CrossOrigin public Object productosOrden(@RequestParam long
-	 * id, @RequestParam String nombre, @RequestParam float precio) {
-	 * HashMap<String, String> hm = new HashMap<>(); Productos productos = new
-	 * Productos(); productos.setIdProducto(id);
-	 * productos.setNombreProducto(nombre); productos.setPrecio(precio);
-	 * 
-	 * try { productosOrden.add(productos); hm.put("Mensaje", "Detalle guardado"); }
-	 * catch (Exception e) { hm.put("Mensaje", "Error al guardar"); } return hm; }
-	 * 
-	 * @GetMapping(value = "detalles", produces = MediaType.APPLICATION_JSON_VALUE)
-	 * 
-	 * @ResponseBody
-	 * 
-	 * @CrossOrigin public Object getDetalles() { return productosOrden; }
-	 */
 	
 	@GetMapping(value = "vista")
 	public String vista(Model m) {

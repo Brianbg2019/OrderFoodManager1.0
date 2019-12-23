@@ -60,7 +60,8 @@ function guardar(){
             precio : $("#precio").val()
         },
         success : function(response){
-            location.reload();
+            DTProductos();
+            //location.reload();
         },
         error : errorPeticion
     });

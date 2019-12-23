@@ -30,10 +30,90 @@
         Order Food Manager
         <!-- <a href="/detalle/mostrar"><img id="carro" src="/imgs/iconos/icon.png" width="70px" height="70px"
             data-target="#portfolioModal12" data-toggle="modal"></a> -->
-        <a href="/detalle/mostrar"><i class="text-light fas fa-concierge-bell fa-lg mt-3 mr-4 float-right"></i></a>
+        <!-- <a href="/detalle/mostrar"><i class="text-light fas fa-concierge-bell fa-lg mt-3 mr-4 float-right"></i></a> -->
+        <button type="button" class="btn btn-primary mt-1 mr-4 float-right" data-toggle="modal" data-target="#myModal"
+          style="height: 50px;">
+          <i class="text-light fas fa-concierge-bell fa-lg"></i>
+           <h6 class="badge badge-danger" id="noti">!</h6>
+        </button>
+        
       </div>
     </div>
   </header>
+
+  <!-- Modal Ordenes -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon">
+              <h4>Orden</h4>
+            </div>
+            <div class="divider-custom-line"></div>
+          </div>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="container mt-2 mb-5">
+            <table class="table table-hover border border-info" id="TDetalles">
+              <thead class="bg-info">
+                <tr>
+                  <th>N°</th>
+                  <th>Producto</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Total</th>
+                  <th>Eliminar</th>
+                </tr>
+              </thead>
+              <tbody id="ProductDetails">
+                <!--  <tr>
+                  <td>01</td>
+                  <td>Carne asada</td>
+                  <td>1</td>
+                  <td>3.50</td>
+                  <td>
+                    <a class="btn btn-outline-warning" role="button"><i class="fas fa-edit"></i> Editar</a>
+                    <a class="btn btn-outline-danger" role="button"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                  </td>
+      
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+          <div class="container">
+            <div class="row justify-content-center align-items-center">
+              <button class="btn btn-info btn-lg"><img src="/images/ordenar.png" width="30" height="30">
+                Ordenar</button>
+            </div>
+          </div>
+          <div class="text-right container">
+            <label for="nombre" class="text-info">
+              <h2>Total:</h2>
+            </label>
+            <div id="totalPagar" style="width: 50px; height: 50px;" class="bg-light float-right ml-1">
+              <h4 class="float-left text-muted mt-2">$</h4>
+            </div><br>
+            <span class="text-muted">*Total de la orden*</span><br>
+            
+      
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!--ESTA ES LA CABECERA DEL PORTAFOLIO-->
   <section class="page-section portfolio" id="portfolio"
@@ -537,6 +617,7 @@
   <!-- Custom scripts for this template -->
   <script th:src="@{/js/main.js}"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
   <script>
     let datosOrden = {
       id: 0,
@@ -547,6 +628,9 @@
       $("body").on("click", ".ordenar", function () {
         cargarDetalles($(this).parent().parent().children('td:eq(0)').text());
       });
+      cargarOrden();
+      //datatableDetalles();
+      $("#noti").hide();
     }
 
     function obtenerProductosCategoria(categoria, id) {
@@ -568,9 +652,9 @@
           + "<td><img src=" + i.imagen + "/ width='80px' height='80px'></td>"
           + "<td>" + i.nombreProducto + "</td>"
           + "<td>" + "<input class='inpcantidad' value='1' type='number' style='border: 0; background-color: white;' " + "</td>"
-          + "<td>" + i.precio  + "</td>"
+          + "<td>" + i.precio + "</td>"
           + "<td><button class='btn btn-primary ordenar'>Ordenar</button></td>"
-         +"</tr>");
+          + "</tr>");
       });
     }
 
@@ -583,7 +667,7 @@
         method: "Post",
         data: {
           idProducto: datosOrden.id,
-          cantidad : $("input.inpcantidad").val()
+          cantidad: $("input.inpcantidad").val()
         },
         success: function (response) {
           Swal.fire({
@@ -593,6 +677,8 @@
             showConfirmButton: false,
             timer: 1500
           })
+          cargarOrden();
+          $("#noti").show();
           console.log(response.Mensaje);
         },
         error: error
@@ -601,6 +687,71 @@
 
     function error(response) {
       alert("Error");
+    }
+
+    function TDetalles(){
+      $("#TDetalles").DataTable({
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ ",
+            "zeroRecords": "No hay sintomas que mostrar.",
+            "info": "Mostar páginas _PAGE_ de _PAGES_",
+            "infoEmpty": "",
+            "infoFiltered": "(Filtrados por _MAX_ total registros)",
+            "search": "Buscar:",
+            "paginate": {
+                "first": "Primero",
+                "last": "Anterior",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        }
+      });
+    }
+
+    function cargarOrden(){
+      $.ajax({
+        url : "http://localhost:8080/detalle/mostrarDetalles",
+        method:"Get",
+        data : null,
+        success : function(response){
+          $("#ProductDetails").html("");
+          response.forEach(i => {
+            var total = i.idProducto.precio * i.cantidad
+            $("#ProductDetails").append(""
+            +"<tr>"
+              +"<td>" + i.idProducto.idProducto + "</td>"
+              +"<td>" + i.idProducto.nombreProducto + "</td>"
+              +"<td>" + i.idProducto.precio + "</td>"
+              +"<td>" + i.cantidad + "</td>"
+              +"<td>" + total+ "</td>"
+              + "<td>"
+              + "<button class='btn btn-outline-danger' onclick='remover("+i.idProducto.idProducto+")'><i class='fas fa-trash-alt'></i>Eliminar</button>"
+              +"</td>"
+            +"</tr>"
+            );
+            totalPago(total);
+          });
+        },
+        error : function(response){
+          console.log("Error en la peticion" + response);
+        }
+      });
+    }
+
+    function remover(indice){
+        $.ajax({
+          url : "http://localhost:8080/detalle/remove/" + indice,
+          method : "Get",
+          success : function(response){
+            console.log(response.Mensaje);
+            cargarOrden();
+          },
+          error : error
+        });
+    }
+
+    function totalPago(total){
+      $("#totalPagar").html("<h4>"+(total + total)+"</h4>");
     }
   </script>
 </body>
