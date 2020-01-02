@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>Cliente</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="/Usuario/images/icons/favicon.ico" />
+    <link rel="icon" href="/img/logo2.png">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="/Usuario/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -37,19 +37,25 @@
                 <span class="p-b-41 display-3 text-light texto" style="font-family: Gill Sans;">
                     Bienvenidos/as
                 </span>
-                <form class="login100-form validate-form p-b-33 p-t-5 mt-3">
-                    <div class="wrap-input100 validate-input" data-validate="Enter username">
-                        <input class="input100" type="text" name="username" placeholder="Ingrese su nombre">
+                <div class="login100-form validate-form p-b-33 p-t-5 mt-3">
+                    <div class="wrap-input100 validate-input" data-validate="Ingrese su nombre">
+                        <input class="input100" type="text" id="inpCliente" placeholder="Ingrese su nombre"
+                            autocomplete="off">
                         <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                     </div>
                     <div class="container-login100-form-btn m-t-32">
-                        <button class="login100-form-btn">
+                        <button class="login100-form-btn" id="btnSave">
                             Entrar
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
+        <section class="copyright p-3 mt-3 text-center">
+            <div class="container">
+                <small>Copyright &copy; OrderFoodManager_CDS 2019</small>
+            </div>
+        </section>
     </div>
 
 
@@ -71,7 +77,54 @@
     <script src="/Usuario/vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
     <script src="/Usuario/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
+    <script>
+        $(document).ready(inicio);
+        function inicio() {
+            $("#btnSave").click(valid);
+        }
+
+        function guardar() {
+            $.ajax({
+                url: "http://localhost:8080/cliente/save",
+                method: "Get",
+                data: {
+                    nombre: $("#inpCliente").val()
+                },
+                success: function (response) {
+                    console.log(response.Mensaje);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Bienvenido!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    $("#inpCliente").val("");
+                    $(location).attr("href","http://localhost:8080/detalle/vista")
+                },
+                error: function (response) {
+                    console.log(response.Mensaje);
+                }
+            });
+        }
+
+        function valid(){
+            var nombre = $("#inpCliente").val();
+            if(nombre == ""){
+                Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Ingrese su nombre!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+            }else{
+                guardar();
+            }
+        }
+    </script>
 </body>
 
 </html>
