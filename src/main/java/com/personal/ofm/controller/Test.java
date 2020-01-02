@@ -13,9 +13,9 @@ public class Test {
 		return "OrdenControl";
 	}
 	
-	@GetMapping(value = "dmvista")
+	@GetMapping(value = "usuario")
 	public String detalle() {
-		return "DMVentas";
+		return "vistaCliente/LoginUsuario";
 	}
 
 	@GetMapping(value="buscar")
