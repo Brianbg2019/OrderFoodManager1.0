@@ -3,8 +3,6 @@ package com.personal.ofm.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Controller
 @RequestMapping("vista")
@@ -15,9 +13,9 @@ public class Test {
 		return "OrdenControl";
 	}
 	
-	@GetMapping(value = "dmvista")
+	@GetMapping(value = "usuario")
 	public String detalle() {
-		return "DMVentas";
+		return "vistaCliente/LoginUsuario";
 	}
 
 	@GetMapping(value="buscar")

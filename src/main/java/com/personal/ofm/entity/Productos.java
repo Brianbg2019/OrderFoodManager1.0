@@ -5,9 +5,7 @@
  */
 package com.personal.ofm.entity;
 
-import java.io.FileInputStream;
 import java.io.Serializable;
-import java.sql.Blob;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -138,7 +136,7 @@ public class Productos implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        
         if (!(object instanceof Productos)) {
             return false;
         }
