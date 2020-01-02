@@ -11,7 +11,7 @@
 	<div th:fragment="contenido">
 		<div class="col-10 offset-1 mt-3">
 			<!--Formulario para agregar nueva categoria-->
-			<div id="muestra" class="container mt-3">
+			 <!-- <div id="muestra" class="container mt-3">
 				<form th:action="@{/categoria/verificar}" method="post">
 					<div class="form-group row justify-content-end">
 						<input type="text" class="form-control col-4" name="nombreCategoria"
@@ -19,11 +19,11 @@
 						<button id="guardarCategoria" class="btn btn-success ml-1" type="button">Agregar</button>
 					</div>
 				</form>
-			</div>
+			</div> -->
 			<!--boton para agregar nueva categoria-->
-			<button id="cate" type="button" class="btn btn-outline-info btn-lg"><i class="far fa-clipboard"></i> Nueva
-				Categoria</button>
-		</div>
+		 <!-- <button id="cate" type="button" class="btn btn-outline-info btn-lg"><i class="far fa-clipboard"></i> Nueva
+				Categoria</button> -->
+		</div> 
 
 
 
@@ -34,10 +34,10 @@
 			<table class="table table-bordered" id="TablaCategoria">
 				<thead class="bg-info">
 					<tr class="text-light">
-						<th>ID</th>
-						<th>Categoria</th>
-						<th>Editar</th>
-						<th>Eliminar</th>
+						<th class="text-center">N°</th>
+						<th class="text-center">Categoria</th>
+						<!-- <th>Editar</th>
+						<th>Eliminar</th> -->
 					</tr>
 				</thead>
 				<!-- <tbody class="text-dark">

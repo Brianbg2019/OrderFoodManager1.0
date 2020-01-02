@@ -17,12 +17,6 @@ function DTCategoria(){
         },{
             data : "categoria",
             "width": "20%"
-        },{
-            data : "Editar",
-            "width": "20%"
-        },{
-            data : "Eliminar",
-            "width": "20%"
         }],
         "language": {
             "lengthMenu": "Mostrar _MENU_ ",

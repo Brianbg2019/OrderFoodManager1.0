@@ -40,8 +40,7 @@ public class CategoriaController {
 			HashMap<String, Object> hm = new HashMap<>();
 			hm.put("idCategoria", cat.getIdCategoria());
 			hm.put("categoria", cat.getNombreCategoria());
-			hm.put("Editar", "<button type='button' class='btn btn-warning'>Editar</button>");
-			hm.put("Eliminar", "<button type='button' class='btn btn-danger'>Eliminar</button>");
+			
 			registros.add(hm);
 		}
 		
